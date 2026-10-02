@@ -1,0 +1,398 @@
+Branch Name,Ref No,DateAndTime,TxFlagStrings,RunHours,DriverName,DriverSurname
+Ridgeback  Riverside ,FBA00506378449,2026-09-12T06:14:46,Power Up,39074849,,
+Ridgeback Riverside,FBA00506378449,2026-09-12T06:15:55,Driver Change,39074849,Naledi,Hendricks
+Ridgeback Riverside,FBA00506378449,2026-09-12T06:45:53,Unit (Time/GPS) Update Level,39075533,Naledi,Hendricks
+Ridgeback Riverside,FBA00506378449,2026-09-12T07:15:51,Unit (Time/GPS) Update Level,39076493,Naledi,Hendricks
+Ridgeback Riverside, FBA00506378449,2026-09-12T07:45:55,Unit (Time/GPS) Update Level,39077458,Naledi,Hendricks
+Ridgeback Riverside,FBA00506378449,2026-09-12T08:15:56,Unit (Time/GPS) Update Level,39078283,Naledi,Hendricks
+Ridgeback Riverside,FBA00506378449,2026-09-12T08:46:01,Unit (Time/GPS) Update Level,39079035,Naledi,Hendricks
+Ridgeback Riverside,FBA00506378449,2026-09-12T09:15:56,Unit (Time/GPS) Update Level,39079755,Naledi,Hendricks
+Ridgeback Riverside,FBA00506378449,2026-09-12T09:45:53,Unit (Time/GPS) Update Level,39080559,,
+Ridgeback Riverside,FBA00506378449,2026-09-12T10:15:58,Unit (Time/GPS) Update Level,39081253,Naledi,Hendricks
+Ridgeback Riverside,FBA00506378449,2026-09-12T10:45:56,Unit (Time/GPS) Update Level,39082187,Naledi,Hendricks
+Ridgeback Riverside,FBA00506378449,2026-09-12T11:15:58,Unit (Time/GPS) Update Level,39083022,Naledi,Hendricks
+Ridgeback Riverside,FBA00506378449,2026-09-12T11:45:57,Unit (Time/GPS) Update Level,39084017,Naledi,Hendricks
+Ridgeback Riverside,FBA00506378449,2026-09-12T12:15:53,Unit (Time/GPS) Update Level,39084658,Naledi,Hendricks
+Ridgeback Riverside,FBA00506378449,2026-09-12T12:15:53,Unit (Time/GPS) Update Level,39084658,Naledi,Hendricks
+Ridgeback Northgate,FBA17235852174,2026-09-12T06:07:52,Power Up,31171661,,
+Ridgeback Northgate,FBA17235852174,2026-09-12T06:09:24,Driver Change,31171661,Karabo,Shabalala
+Ridgeback Northgate,FBA17235852174,2026-09-12T06:39:20,Unit (Time/GPS) Update Level,31172783,Karabo,Shabalala
+Ridgeback Northgate,FBA17235852174,2026-09-12T06:44:53,Excess Idle,31172945,Karabo,Shabalala
+Ridgeback Northgate,FBA17235852174,2026-09-12T07:09:20,Unit (Time/GPS) Update Level,31173659,Karabo,Shabalala
+Ridgeback Northgate,FBA17235852174,2026-09-12T07:22:38,Speeding,31173915,Karabo,Shabalala
+Ridgeback Northgate,FBA17235852174,2026-09-12T07:39:17,Unit (Time/GPS) Update Level,31174237,Karabo,Shabalala
+Ridgeback Northgate,FBA17235852174,2026-09-12T08:09:12,Unit (Time/GPS) Update Level,31174923,Karabo,Shabalala
+Ridgeback Northgate,FBA17235852174,2026-09-12T08:39:09,Unit (Time/GPS) Update Level,31175713,Karabo,Shabalala
+Ridgeback  Northgate ,FBA17235852174,2026-09-12T09:09:12,Unit (Time/GPS) Update Level,31176452,Karabo,Shabalala
+Ridgeback Northgate,FBA17235852174,2026-09-12T09:39:15,Unit (Time/GPS) Update Level,31177374,Karabo,Shabalala
+Ridgeback Northgate,FBA17235852174,2026-09-12T10:09:20,Unit (Time/GPS) Update Level,31178147,Karabo,Shabalala
+Ridgeback Northgate,FBA17235852174,2026-09-12T10:31:34,Harsh Acceleration,31179003,Karabo,Shabalala
+Ridgeback Northgate,FBA17235852174,2026-09-12T10:39:25,Unit (Time/GPS) Update Level,31179302,Karabo,Shabalala
+Ridgeback Northgate,FBA17235852174,2026-09-12T11:09:25,Unit (Time/GPS) Update Level,31179953,Karabo,Shabalala
+Ridgeback Northgate,FBA17235852174,2026-09-12T11:39:23,Unit (Time/GPS) Update Level,31180822,Karabo,Shabalala
+Ridgeback Northgate,FBA17235852174,2026-09-12T12:09:22,Unit (Time/GPS) Update Level,31181909,Karabo,Shabalala
+Ridgeback Northgate,FBA17235852174,2026-09-12T12:39:18,Unit (Time/GPS) Update Level,31182614,Karabo,Shabalala
+RIDGEBACK NORTHGATE,FBA17235852174,2026-09-12T13:09:13,Unit (Time/GPS) Update Level,31183758,Karabo,Shabalala
+Ridgeback Northgate,FBA17235852174,2026-09-12T13:39:11,Unit (Time/GPS) Update Level,31184617,Karabo,Shabalala
+Ridgeback Northgate,FBA17235852174,2026-09-12T14:09:06,Unit (Time/GPS) Update Level,31185404,Karabo,Shabalala
+Ridgeback Harbour,FBA23508741476,2026-09-12T06:14:27,Power Up,32870706,,
+Ridgeback Harbour,FBA23508741476,2026-09-12T06:16:04,Driver Change,32870706,Lwazi,Chetty
+Ridgeback Harbour,FBA23508741476,2026-09-12T06:46:06,Unit (Time/GPS) Update Level,32872395,Lwazi,Chetty
+Ridgeback Harbour,FBA23508741476,2026-09-12T07:00:00,Excess Idle,32873048,Lwazi,Chetty
+Ridgeback Harbour,FBA23508741476,2026-09-12T07:16:07,Unit (Time/GPS) Update Level,32873805,Lwazi,Chetty
+Ridgeback Harbour,FBA23508741476,2026-09-12T07:46:04,Unit (Time/GPS) Update Level,32875182,Lwazi,Chetty
+Ridgeback Harbour,FBA23508741476,2026-09-12T08:16:07,Unit (Time/GPS) Update Level,32876523,Lwazi,Chetty
+Ridgeback Harbour,FBA23508741476,2026-09-12T08:46:09,Unit (Time/GPS) Update Level,32877613,Lwazi,Chetty
+Ridgeback Harbour,FBA23508741476,2026-09-12T09:01:26,Impact,32878332,Lwazi,Chetty
+Ridgeback Harbour,FBA23508741476,2026-09-12T09:16:10,Unit (Time/GPS) Update Level,32879024,Lwazi,Chetty
+Ridgeback Harbour,FBA23508741476,2026-09-12T09:46:08,Unit (Time/GPS) Update Level,32880651,Lwazi,Chetty
+Ridgeback Harbour,FBA23508741476,2026-09-12T10:16:12,Unit (Time/GPS) Update Level,32881604,Lwazi,Chetty
+Ridgeback Harbour,FBA23508741476,2026-09-12T10:44:09,Harsh Acceleration,32882926,Lwazi,Chetty
+Ridgeback Harbour,FBA23508741476,2026-09-12T10:46:13,Unit (Time/GPS) Update Level,32883023,Lwazi,Chetty
+Ridgeback Harbour,FBA23508741476,2026-09-12T10:50:28,Excess Idle,32883214,Lwazi,Chetty
+Ridgeback Harbour,FBA23508741476,2026-09-12T11:16:18,Unit (Time/GPS) Update Level,32884374,Lwazi,Chetty
+Ridgeback Harbour,FBA23508741476,2026-09-12T11:46:13,Unit (Time/GPS) Update Level,32885664,Lwazi,Chetty
+Ridgeback Harbour,FBA23508741476,2026-09-12T12:16:16,Unit (Time/GPS) Update Level,32887207,Lwazi,Chetty
+Ridgeback Harbour,FBA23508741476,2026-09-12T12:29:18,Speeding,32887777,Lwazi,Chetty
+Ridgeback Harbour,FBA23508741476,2026-09-12T12:46:17,Unit (Time/GPS) Update Level,32888518,Lwazi,Chetty
+Ridgeback Harbour, FBA23508741476,2026-09-12T12:57:22,Harsh Braking,32889102,Lwazi,Chetty
+Ridgeback Harbour,FBA23508741476,2026-09-12T13:16:19,Unit (Time/GPS) Update Level,32890098,Lwazi,Chetty
+Ridgeback Harbour, FBA23508741476,2026-09-12T13:29:07,Excess Idle,32890588,Lwazi,Chetty
+Ridgeback Harbour,FBA23508741476,2026-09-12T13:46:21,Unit (Time/GPS) Update Level,32891247,Lwazi,Chetty
+Ridgeback Harbour,FBA23508741476,2026-09-12T14:16:19,Unit (Time/GPS) Update Level,32892345,Lwazi,Chetty
+Ridgeback Harbour,FBA33639374813,2026-09-12T06:04:33,Power Up,127268,,
+Ridgeback Harbour,FBA33639374813,2026-09-12T06:05:47,Driver Change,127268,Yusuf,Govender
+RIDGEBACK HARBOUR,FBA33639374813,2026-09-12T06:32:49,Excess Idle,128241,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T06:35:33,Harsh Acceleration,128339,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T06:35:52,Unit (Time/GPS) Update Level,128348,Yusuf,Govender
+Ridgeback Harbour, FBA33639374813,2026-09-12T07:05:47,Unit (Time/GPS) Update Level,129218,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T07:35:42,Unit (Time/GPS) Update Level,130649,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T08:05:41,Unit (Time/GPS) Update Level,131877,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T08:35:44,Unit (Time/GPS) Update Level,132868,Yusuf,Govender
+Ridgeback  Harbour ,FBA33639374813,2026-09-12T09:05:46,Unit (Time/GPS) Update Level,134005,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T09:16:18,Harsh Acceleration,134464,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T09:35:41,Unit (Time/GPS) Update Level,135312,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T10:05:43,Unit (Time/GPS) Update Level,137006,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T10:24:14,Harsh Braking,138016,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T10:29:44,Speeding,138317,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T10:35:38,Unit (Time/GPS) Update Level,138643,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T10:46:08,Harsh Braking,138978,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T11:05:39,Unit (Time/GPS) Update Level,139601,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T11:18:35,Harsh Braking,140287,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T11:21:17,Harsh Braking,140430,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T11:27:44,Excess Idle,140772,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T11:35:36,Unit (Time/GPS) Update Level,141192,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T12:00:36,Harsh Braking,142466,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T12:05:41,Unit (Time/GPS) Update Level,142720,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T12:20:05,Harsh Braking,143373,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T12:35:37,Unit (Time/GPS) Update Level,144081,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T12:54:51,Impact,145069,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T13:05:41,Unit (Time/GPS) Update Level,145621,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T13:35:36,Unit (Time/GPS) Update Level,146602,Yusuf,Govender
+Ridgeback Harbour,FBA33639374813,2026-09-12T13:54:57,Impact,147626,Yusuf,Govender
+RIDGEBACK HARBOUR,FBA33639374813,2026-09-12T14:05:35,Unit (Time/GPS) Update Level,148190,Yusuf,Govender
+Ridgeback Northgate,FBA40546075912,2026-09-12T06:20:12,Power Up,17001918,,
+Ridgeback Northgate,FBA40546075912,2026-09-12T06:21:19,Driver Change,17001918,Ayanda,Coetzee
+Ridgeback Northgate,FBA40546075912,2026-09-12T06:51:19,Unit (Time/GPS) Update Level,17002560,Ayanda,Coetzee
+Ridgeback Northgate,FBA40546075912,2026-09-12T07:21:20,Unit (Time/GPS) Update Level,17003495,Ayanda,Coetzee
+Ridgeback Northgate,FBA40546075912,2026-09-12T07:51:19,Unit (Time/GPS) Update Level,17004137,Ayanda,Coetzee
+Ridgeback Northgate,FBA40546075912,2026-09-12T08:21:17,Unit (Time/GPS) Update Level,17004832,Ayanda,Coetzee
+Ridgeback Northgate,FBA40546075912,2026-09-12T08:51:18,Unit (Time/GPS) Update Level,17005856,Ayanda,Coetzee
+RIDGEBACK NORTHGATE,FBA40546075912,2026-09-12T09:21:17,Unit (Time/GPS) Update Level,17006539,Ayanda,Coetzee
+Ridgeback Northgate,FBA40546075912,2026-09-12T09:51:14,Unit (Time/GPS) Update Level,17007231,Ayanda,Coetzee
+Ridgeback Northgate,FBA40546075912,2026-09-12T10:21:17,Unit (Time/GPS) Update Level,17008012,Ayanda,Coetzee
+Ridgeback Northgate,FBA40546075912,2026-09-12T10:51:15,Unit (Time/GPS) Update Level,17008944,Ayanda,Coetzee
+Ridgeback Northgate,FBA40546075912,2026-09-12T11:21:13,Unit (Time/GPS) Update Level,17009529,Ayanda,Coetzee
+Ridgeback Northgate,FBA40546075912,2026-09-12T11:51:17,Unit (Time/GPS) Update Level,17010405,Ayanda,Coetzee
+Ridgeback Northgate,FBA40546075912,2026-09-12T11:51:17,Unit (Time/GPS) Update Level,17010405,Ayanda,Coetzee
+Ridgeback Northgate,FBA40546075912,2026-09-12T12:21:13,Unit (Time/GPS) Update Level,17011513,Ayanda,Coetzee
+Ridgeback Northgate, FBA40546075912,2026-09-12T12:22:59,Speeding,17011566,Ayanda,Coetzee
+Ridgeback Northgate,FBA40546075912,2026-09-12T12:51:10,Unit (Time/GPS) Update Level,17012414,Ayanda,Coetzee
+Ridgeback Northgate,FBA40546075912,2026-09-12T13:21:06,Unit (Time/GPS) Update Level,17013411,Ayanda,Coetzee
+Ridgeback Northgate,FBA40546075912,2026-09-12T13:51:01,Unit (Time/GPS) Update Level,17014510,Ayanda,Coetzee
+RIDGEBACK NORTHGATE,FBA40546075912,2026-09-12T14:21:04,Unit (Time/GPS) Update Level,17015150,Ayanda,Coetzee
+Ridgeback Airport,FBA47757822557,2026-09-12T06:06:19,Power Up,19685358,,
+Ridgeback Airport,FBA47757822557,2026-09-12T06:06:52,Driver Change,19685358,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T06:36:50,Unit (Time/GPS) Update Level,19686514,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T07:06:50,Unit (Time/GPS) Update Level,19687516,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T07:36:46,Unit (Time/GPS) Update Level,19688522,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T08:06:47,Unit (Time/GPS) Update Level,19689765,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T08:06:54,Harsh Braking,19689770,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T08:34:57,Excess Idle,19691091,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T08:36:48,Unit (Time/GPS) Update Level,19691178,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T09:06:50,Unit (Time/GPS) Update Level,19691974,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T09:36:53,Unit (Time/GPS) Update Level,19693068,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T09:39:33,Excess Idle,19693179,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T10:06:48,Unit (Time/GPS) Update Level,19694316,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T10:36:53,Unit (Time/GPS) Update Level,19695089,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T11:06:54,Unit (Time/GPS) Update Level,19695798,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T11:36:57,Unit (Time/GPS) Update Level,19696835,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T11:52:40,Speeding,19697411,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T12:07:02,Unit (Time/GPS) Update Level,19697934,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T12:27:34,Harsh Acceleration,19698692,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T12:37:03,Unit (Time/GPS) Update Level,19699042,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T13:07:04,Unit (Time/GPS) Update Level,19699939,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T13:37:03,Unit (Time/GPS) Update Level,19701033,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T13:44:13,Harsh Braking,19701202,Mandla,Cele
+Ridgeback Airport,FBA47757822557,2026-09-12T14:06:58,Unit (Time/GPS) Update Level,19701742,Mandla,Cele
+Ridgeback Riverside,FBA60251489088,2026-09-12T06:13:09,Power Up,31580052,,
+Ridgeback Riverside,FBA60251489088,2026-09-12T06:14:48,Driver Change,31580052,Karabo,Naidoo
+Ridgeback Riverside,FBA60251489088,2026-09-12T06:44:52,Unit (Time/GPS) Update Level,31580967,Karabo,Naidoo
+Ridgeback Riverside,FBA60251489088,2026-09-12T07:14:55,Unit (Time/GPS) Update Level,31582008,Karabo,Naidoo
+Ridgeback Riverside,FBA60251489088,2026-09-12T07:44:52,Unit (Time/GPS) Update Level,31583083,Karabo,Naidoo
+Ridgeback Riverside,FBA60251489088,2026-09-12T08:14:53,Unit (Time/GPS) Update Level,31584700,Karabo,Naidoo
+Ridgeback Riverside,FBA60251489088,2026-09-12T08:04:18,Harsh Acceleration,31584130,Karabo,Naidoo
+RIDGEBACK RIVERSIDE,FBA60251489088,2026-09-12T08:44:51,Unit (Time/GPS) Update Level,31586180,Karabo,Naidoo
+Ridgeback Riverside,FBA60251489088,2026-09-12T09:10:05,Harsh Braking,31587254,Karabo,Naidoo
+Ridgeback Riverside,FBA60251489088,2026-09-12T09:14:52,Unit (Time/GPS) Update Level,31587457,Karabo,Naidoo
+Ridgeback Riverside,FBA60251489088,2026-09-12T09:44:50,Unit (Time/GPS) Update Level,31588457,Karabo,Naidoo
+Ridgeback Riverside,FBA60251489088,2026-09-12T10:14:45,Unit (Time/GPS) Update Level,31590047,Karabo,Naidoo
+Ridgeback Riverside,FBA60251489088,2026-09-12T10:44:48,Unit (Time/GPS) Update Level,31591716,Karabo,Naidoo
+Ridgeback Riverside,FBA60251489088,2026-09-12T11:14:43,Unit (Time/GPS) Update Level,31592565,Karabo,Naidoo
+Ridgeback Riverside,FBA60251489088,2026-09-12T11:44:45,Unit (Time/GPS) Update Level,31593979,Karabo,Naidoo
+Ridgeback Riverside,FBA60251489088,2026-09-12T12:00:35,Harsh Braking,31594503,Karabo,Naidoo
+Ridgeback Riverside,FBA60251489088,2026-09-12T12:14:48,Unit (Time/GPS) Update Level,31594972,Karabo,Naidoo
+Ridgeback Riverside,FBA60251489088,2026-09-12T12:25:46,Harsh Braking,31595274,Karabo,Naidoo
+Ridgeback Riverside,FBA60251489088,2026-09-12T12:44:43,Unit (Time/GPS) Update Level,31595798,Karabo,Naidoo
+Ridgeback Riverside,FBA60251489088,2026-09-12T13:14:45,Unit (Time/GPS) Update Level,31597320,Karabo,Naidoo
+Ridgeback Riverside,FBA60251489088,2026-09-12T13:44:44,Unit (Time/GPS) Update Level,31598943,Karabo,Naidoo
+Ridgeback Riverside,FBA60251489088,2026-09-12T14:14:45,Unit (Time/GPS) Update Level,31600364,Karabo,Naidoo
+Ridgeback Northgate,FBA74922128580,2026-09-12T06:05:20,Power Up,28469501,,
+Ridgeback Northgate,FBA74922128580,2026-09-12T06:06:35,Driver Change,28469501,Lerato,Jacobs
+RIDGEBACK NORTHGATE,FBA74922128580,2026-09-12T06:36:31,Unit (Time/GPS) Update Level,28470395,Lerato,Jacobs
+Ridgeback Northgate,FBA74922128580,2026-09-12T07:06:27,Unit (Time/GPS) Update Level,28471536,Lerato,Jacobs
+Ridgeback Northgate,FBA74922128580,2026-09-12T07:36:26,Unit (Time/GPS) Update Level,28472677,Lerato,Jacobs
+Ridgeback Northgate,FBA74922128580,2026-09-12T08:06:24,Unit (Time/GPS) Update Level,28474049,Lerato,Jacobs
+Ridgeback Northgate,FBA74922128580,2026-09-12T08:36:23,Unit (Time/GPS) Update Level,28475203,Lerato,Jacobs
+Ridgeback Northgate,FBA74922128580,2026-09-12T08:56:03,Harsh Braking,28476074,Lerato,Jacobs
+Ridgeback Northgate,FBA74922128580,2026-09-12T08:58:04,Harsh Acceleration,28476164,Lerato,Jacobs
+Ridgeback Northgate,FBA74922128580,2026-09-12T09:06:18,Unit (Time/GPS) Update Level,28476532,Lerato,Jacobs
+Ridgeback  Northgate ,FBA74922128580 ,2026-09-12T09:36:17,Unit (Time/GPS) Update Level,28477947,Lerato,Jacobs
+Ridgeback Northgate,FBA74922128580,2026-09-12T10:06:22,Unit (Time/GPS) Update Level,28479142,Lerato,Jacobs
+Ridgeback Northgate,FBA74922128580,2026-09-12T10:36:27,Unit (Time/GPS) Update Level,28480299,Lerato,Jacobs
+Ridgeback Northgate,FBA74922128580,2026-09-12T10:36:27,Unit (Time/GPS) Update Level,28480299,Lerato,Jacobs
+RIDGEBACK NORTHGATE,FBA74922128580,2026-09-12T11:06:26,Unit (Time/GPS) Update Level,28481489,Lerato,Jacobs
+Ridgeback Northgate,FBA74922128580,2026-09-12T11:36:23,Unit (Time/GPS) Update Level,28482353,Lerato,Jacobs
+Ridgeback Northgate,FBA74922128580,2026-09-12T12:06:28,Unit (Time/GPS) Update Level,28483500,Lerato,Jacobs
+Ridgeback Northgate,FBA74922128580,2026-09-12T12:25:20,Impact,28484211,Lerato,Jacobs
+Ridgeback Northgate,FBA74922128580,2026-09-12T12:27:10,Speeding,28484280,,
+Ridgeback Northgate,FBA74922128580,2026-09-12T12:36:28,Unit (Time/GPS) Update Level,28484630,Lerato,Jacobs
+Ridgeback Northgate,FBA74922128580,2026-09-12T13:06:33,Unit (Time/GPS) Update Level,28486003,Lerato,Jacobs
+Ridgeback Northgate,FBA74922128580,2026-09-12T13:36:34,Unit (Time/GPS) Update Level,28487264,Lerato,Jacobs
+Ridgeback Northgate,FBA74922128580,2026-09-12T14:06:37,Unit (Time/GPS) Update Level,28488405,Lerato,Jacobs
+Ridgeback Harbour,FBA84950350100,2026-09-12T06:15:37,Power Up,14058876,,
+Ridgeback Harbour,FBA84950350100,2026-09-12T06:17:23,Driver Change,14058876,Karabo,Pretorius
+Ridgeback Harbour,FBA84950350100,2026-09-12T06:47:21,Unit (Time/GPS) Update Level,14060134,Karabo,Pretorius
+Ridgeback Harbour,FBA84950350100,2026-09-12T07:17:19,Unit (Time/GPS) Update Level,14061309,Karabo,Pretorius
+Ridgeback  Harbour ,FBA84950350100,2026-09-12T07:47:21,Unit (Time/GPS) Update Level,14062143,Karabo,Pretorius
+Ridgeback Harbour,FBA84950350100,2026-09-12T08:17:23,Unit (Time/GPS) Update Level,14063315,Karabo,Pretorius
+Ridgeback Harbour,FBA84950350100,2026-09-12T08:47:27,Unit (Time/GPS) Update Level,14064673,Karabo,Pretorius
+Ridgeback Harbour,FBA84950350100,2026-09-12T08:52:27,Harsh Acceleration,14064835,Karabo,Pretorius
+Ridgeback Harbour,FBA84950350100,2026-09-12T09:17:22,Unit (Time/GPS) Update Level,14065648,Karabo,Pretorius
+Ridgeback Harbour,FBA84950350100,2026-09-12T09:47:20,Unit (Time/GPS) Update Level,14066948,Karabo,Pretorius
+Ridgeback Harbour,FBA84950350100,2026-09-12T10:17:24,Unit (Time/GPS) Update Level,14068271,Karabo,Pretorius
+Ridgeback Harbour,FBA84950350100,2026-09-12T10:47:21,Unit (Time/GPS) Update Level,14069552,Karabo,Pretorius
+Ridgeback Harbour,FBA84950350100,2026-09-12T11:17:19,Unit (Time/GPS) Update Level,14070329,Karabo,Pretorius
+Ridgeback Harbour,FBA84950350100,2026-09-12T11:47:21,Unit (Time/GPS) Update Level,14071610,Karabo,Pretorius
+Ridgeback Harbour,FBA84950350100,2026-09-12T12:17:17,Unit (Time/GPS) Update Level,14072587,Karabo,Pretorius
+Ridgeback Harbour,FBA84950350100,2026-09-12T12:47:16,Unit (Time/GPS) Update Level,14073800,Karabo,Pretorius
+Ridgeback Harbour,FBA84950350100,2026-09-12T13:17:20,Unit (Time/GPS) Update Level,14074550,Karabo,Pretorius
+Ridgeback Harbour,FBA84950350100,2026-09-12T13:42:49,Impact,14075531,Karabo,Pretorius
+Ridgeback Harbour,FBA84950350100,2026-09-12T13:47:17,Unit (Time/GPS) Update Level,14075705,Karabo,Pretorius
+Ridgeback Harbour,FBA84950350100,2026-09-12T14:17:20,Unit (Time/GPS) Update Level,14077104,Karabo,Pretorius
+Ridgeback Riverside,P31694,2026-09-12T06:18:46,Power Up,26911469,,
+Ridgeback Riverside,P31694,2026-09-12T06:19:33,Driver Change,26911469,Naledi,Govender
+Ridgeback Riverside,P31694,2026-09-12T06:28:30,Harsh Braking,26911735,Naledi,Govender
+Ridgeback Riverside,P31694,2026-09-12T06:49:31,Unit (Time/GPS) Update Level,26912362,Naledi,Govender
+Ridgeback Riverside, P31694,2026-09-12T07:19:30,Unit (Time/GPS) Update Level,26913598,Naledi,Govender
+Ridgeback Riverside,P31694,2026-09-12T07:26:15,Harsh Braking,26913816,Naledi,Govender
+Ridgeback Riverside,P31694,2026-09-12T07:49:31,Unit (Time/GPS) Update Level,26914568,Naledi,Govender
+Ridgeback Riverside,P31694,2026-09-12T07:51:56,Harsh Acceleration,26914630,Naledi,Govender
+Ridgeback Riverside,P31694,2026-09-12T08:19:28,Unit (Time/GPS) Update Level,26915338,Naledi,Govender
+Ridgeback Riverside,P31694,2026-09-12T08:49:31,Unit (Time/GPS) Update Level,26916183,Naledi,Govender
+Ridgeback Riverside,P31694,2026-09-12T09:19:27,Unit (Time/GPS) Update Level,26917111,Naledi,Govender
+Ridgeback Riverside,P31694,2026-09-12T09:49:26,Unit (Time/GPS) Update Level,26918467,Naledi,Govender
+RIDGEBACK RIVERSIDE,P31694,2026-09-12T10:03:17,Speeding,26918819,Naledi,Govender
+Ridgeback Riverside,P31694,2026-09-12T10:19:24,Unit (Time/GPS) Update Level,26919230,Naledi,Govender
+Ridgeback Riverside,P31694,2026-09-12T10:49:29,Unit (Time/GPS) Update Level,26919938,Naledi,Govender
+Ridgeback Riverside,P31694,2026-09-12T11:04:52,Harsh Braking,26920346,Naledi,Govender
+Ridgeback Riverside,P31694,2026-09-12T11:19:25,Unit (Time/GPS) Update Level,26920735,Naledi,Govender
+Ridgeback Riverside,P31694,2026-09-12T12:10:41,Excess Idle,26922914,Naledi,Govender
+Ridgeback Riverside,P31694,2026-09-12T11:49:27,Unit (Time/GPS) Update Level,26922083,Naledi,Govender
+Ridgeback Riverside,P31694,2026-09-12T12:19:27,Unit (Time/GPS) Update Level,26923258,Naledi,Govender
+Ridgeback Airport,P39080,2026-09-12T06:02:08,Power Up,35260001,,
+Ridgeback Airport,P39080,2026-09-12T06:02:43,Driver Change,35260001,Lindiwe,Moodley
+Ridgeback Airport,P39080,2026-09-12T06:32:41,Unit (Time/GPS) Update Level,35261011,Lindiwe,Moodley
+Ridgeback Airport,P39080,2026-09-12T07:02:37,Unit (Time/GPS) Update Level,35261946,Lindiwe,Moodley
+RIDGEBACK AIRPORT,P39080,2026-09-12T07:32:37,Unit (Time/GPS) Update Level,35262863,Lindiwe,Moodley
+Ridgeback Airport,P39080,2026-09-12T08:02:42,Unit (Time/GPS) Update Level,35263736,Lindiwe,Moodley
+Ridgeback Airport,P39080,2026-09-12T08:32:41,Unit (Time/GPS) Update Level,35264676,Lindiwe,Moodley
+Ridgeback Airport,P39080,2026-09-12T09:02:40,Unit (Time/GPS) Update Level,35265862,Lindiwe,Moodley
+Ridgeback Airport,P39080,2026-09-12T09:32:42,Unit (Time/GPS) Update Level,35266877,Lindiwe,Moodley
+Ridgeback Airport,P39080,2026-09-12T10:02:47,Unit (Time/GPS) Update Level,35267735,,
+Ridgeback Airport,P39080,2026-09-12T10:21:53,Excess Idle,35268477,Lindiwe,Moodley
+Ridgeback Airport,P39080,2026-09-12T10:32:43,Unit (Time/GPS) Update Level,35268901,Lindiwe,Moodley
+Ridgeback Airport,P39080,2026-09-12T11:02:46,Unit (Time/GPS) Update Level,35270143,Lindiwe,Moodley
+Ridgeback Airport,P39080,2026-09-12T11:32:42,Unit (Time/GPS) Update Level,35271096,Lindiwe,Moodley
+Ridgeback Airport,P39080,2026-09-12T12:02:47,Unit (Time/GPS) Update Level,35271855,Lindiwe,Moodley
+Ridgeback Airport,P39080,2026-09-12T12:26:23,Harsh Acceleration,35272464,Lindiwe,Moodley
+Ridgeback Airport,P39080,2026-09-12T12:32:50,Unit (Time/GPS) Update Level,35272630,Lindiwe,Moodley
+Ridgeback Airport,P39080,2026-09-12T12:28:26,Speeding,35272517,Lindiwe,Moodley
+Ridgeback Airport,P39080,2026-09-12T13:02:54,Unit (Time/GPS) Update Level,35273571,Lindiwe,Moodley
+Ridgeback Airport,P39080,2026-09-12T13:32:55,Unit (Time/GPS) Update Level,35274754,,
+Ridgeback Airport,P39080,2026-09-12T14:02:50,Unit (Time/GPS) Update Level,35275868,Lindiwe,Moodley
+Ridgeback Northgate,P44373,2026-09-12T06:09:59,Power Up,26391361,,
+Ridgeback Northgate,P44373,2026-09-12T06:12:36,Driver Change,26391361,Refilwe,Mokoena
+Ridgeback Northgate,P44373,2026-09-12T06:42:31,Unit (Time/GPS) Update Level,26392356,Refilwe,Mokoena
+Ridgeback Northgate,P44373,2026-09-12T07:12:32,Unit (Time/GPS) Update Level,26393799,Refilwe,Mokoena
+Ridgeback Northgate,P44373,2026-09-12T07:24:41,Excess Idle,26394276,Refilwe,Mokoena
+Ridgeback Northgate,P44373,2026-09-12T07:35:57,Excess Idle,26394719,Refilwe,Mokoena
+Ridgeback Northgate,P44373,2026-09-12T07:42:28,Unit (Time/GPS) Update Level,26394978,Refilwe,Mokoena
+Ridgeback Northgate,P44373,2026-09-12T08:12:24,Unit (Time/GPS) Update Level,26396396,Refilwe,Mokoena
+Ridgeback Northgate,P44373,2026-09-12T08:29:32,Speeding,26397334,Refilwe,Mokoena
+Ridgeback Northgate,P44373,2026-09-12T08:42:29,Unit (Time/GPS) Update Level,26398038,Refilwe,Mokoena
+Ridgeback Northgate,P44373,2026-09-12T09:12:27,Unit (Time/GPS) Update Level,26399662,Refilwe,Mokoena
+Ridgeback Northgate, P44373,2026-09-12T09:42:29,Unit (Time/GPS) Update Level,26401129,Refilwe,Mokoena
+Ridgeback Northgate,P44373,2026-09-12T10:12:33,Unit (Time/GPS) Update Level,26402096,Refilwe,Mokoena
+Ridgeback Northgate,P44373,2026-09-12T10:42:36,Unit (Time/GPS) Update Level,26403415,Refilwe,Mokoena
+Ridgeback Northgate,P44373,2026-09-12T11:12:35,Unit (Time/GPS) Update Level,26404929,Refilwe,Mokoena
+Ridgeback Northgate,P44373,2026-09-12T11:14:58,Harsh Braking,26405067,Refilwe,Mokoena
+Ridgeback Northgate,P44373,2026-09-12T11:16:39,Excess Idle,26405164,Refilwe,Mokoena
+Ridgeback Northgate,P44373,2026-09-12T12:12:38,Unit (Time/GPS) Update Level,26407911,Refilwe,Mokoena
+Ridgeback Northgate,P44373,2026-09-12T11:42:33,Unit (Time/GPS) Update Level,26406662,Refilwe,Mokoena
+Ridgeback Northgate,P44373,2026-09-12T12:42:40,Unit (Time/GPS) Update Level,26408802,Refilwe,Mokoena
+Ridgeback Airport,P76104,2026-09-12T06:19:46,Power Up,10278093,,
+RIDGEBACK AIRPORT,P76104,2026-09-12T06:20:43,Driver Change,10278093,Johan,Dlamini
+Ridgeback Airport,P76104,2026-09-12T06:20:49,Excess Idle,10278096,Johan,Dlamini
+Ridgeback Airport,P76104,2026-09-12T06:33:45,Harsh Acceleration,10278469,Johan,Dlamini
+Ridgeback Airport,P76104,2026-09-12T06:50:39,Unit (Time/GPS) Update Level,10278959,Johan,Dlamini
+Ridgeback Airport,P76104,2026-09-12T07:20:38,Unit (Time/GPS) Update Level,10279786,Johan,Dlamini
+Ridgeback Airport,P76104,2026-09-12T07:50:39,Unit (Time/GPS) Update Level,10280291,Johan,Dlamini
+Ridgeback Airport,P76104 ,2026-09-12T08:20:44,Unit (Time/GPS) Update Level,10281020,Johan,Dlamini
+Ridgeback Airport,P76104,2026-09-12T08:22:42,Harsh Acceleration,10281079,Johan,Dlamini
+Ridgeback Airport,P76104,2026-09-12T08:50:40,Unit (Time/GPS) Update Level,10281918,Johan,Dlamini
+Ridgeback Airport,P76104,2026-09-12T09:20:39,Unit (Time/GPS) Update Level,10282759,Johan,Dlamini
+Ridgeback  Airport ,P76104,2026-09-12T09:50:39,Unit (Time/GPS) Update Level,10283522,Johan,Dlamini
+Ridgeback Airport,P76104,2026-09-12T10:20:43,Unit (Time/GPS) Update Level,10284160,Johan,Dlamini
+Ridgeback Airport,P76104,2026-09-12T10:50:47,Unit (Time/GPS) Update Level,10285097,Johan,Dlamini
+Ridgeback Airport,P76104,2026-09-12T10:50:47,Unit (Time/GPS) Update Level,10285097,Johan,Dlamini
+Ridgeback Airport,P76104,2026-09-12T11:20:49,Unit (Time/GPS) Update Level,10285967,Johan,Dlamini
+Ridgeback Airport,P76104,2026-09-12T11:50:45,Unit (Time/GPS) Update Level,10286828,Johan,Dlamini
+Ridgeback Airport,P76104,2026-09-12T12:20:42,Unit (Time/GPS) Update Level,10287732,Johan,Dlamini
+Ridgeback Airport,P76104,2026-09-12T12:38:24,Harsh Acceleration,10288273,Johan,Dlamini
+Ridgeback Airport,P76104,2026-09-12T12:50:43,Unit (Time/GPS) Update Level,10288649,Johan,Dlamini
+Ridgeback Airport,P76104,2026-09-12T12:55:28,Speeding,10288796,Johan,Dlamini
+Ridgeback Airport,P76104,2026-09-12T13:20:48,Unit (Time/GPS) Update Level,10289581,Johan,Dlamini
+Ridgeback Airport,P76104,2026-09-12T13:50:47,Unit (Time/GPS) Update Level,10290109,Johan,Dlamini
+RIDGEBACK NORTHGATE,R10652,2026-09-12T06:07:47,Power Up,38876122,,
+Ridgeback Northgate,R10652,2026-09-12T06:10:30,Driver Change,38876122,Vusi,Mahlangu
+Ridgeback Northgate,R10652,2026-09-12T06:40:32,Unit (Time/GPS) Update Level,38877395,Vusi,Mahlangu
+Ridgeback Northgate,R10652,2026-09-12T07:08:43,Harsh Acceleration,38878198,Vusi,Mahlangu
+Ridgeback Northgate,R10652,2026-09-12T07:10:32,Unit (Time/GPS) Update Level,38878250,Vusi,Mahlangu
+Ridgeback Northgate,R10652,2026-09-12T07:40:35,Unit (Time/GPS) Update Level,38879374,Vusi,Mahlangu
+Ridgeback Northgate,R10652,2026-09-12T08:10:30,Unit (Time/GPS) Update Level,38880200,Vusi,Mahlangu
+Ridgeback Northgate,R10652,2026-09-12T08:40:33,Unit (Time/GPS) Update Level,38881158,Vusi,Mahlangu
+Ridgeback Northgate,R10652,2026-09-12T08:53:53,Harsh Braking,38881706,Vusi,Mahlangu
+Ridgeback Northgate,R10652,2026-09-12T09:10:31,Unit (Time/GPS) Update Level,38882391,Vusi,Mahlangu
+Ridgeback Northgate,R10652,2026-09-12T09:40:29,Unit (Time/GPS) Update Level,38883710,Vusi,Mahlangu
+Ridgeback Northgate,R10652,2026-09-12T10:10:29,Unit (Time/GPS) Update Level,38884500,Vusi,Mahlangu
+Ridgeback Northgate,R10652,2026-09-12T10:40:25,Unit (Time/GPS) Update Level,38885519,Vusi,Mahlangu
+Ridgeback Northgate,R10652,2026-09-12T11:10:20,Unit (Time/GPS) Update Level,38886840,Vusi,Mahlangu
+Ridgeback Northgate,R10652,2026-09-12T11:40:23,Unit (Time/GPS) Update Level,38888272,Vusi,Mahlangu
+RIDGEBACK NORTHGATE,R10652,2026-09-12T12:10:19,Unit (Time/GPS) Update Level,38889150,Vusi,Mahlangu
+Ridgeback Northgate,R10652,2026-09-12T12:16:51,Impact,38889380,Vusi,Mahlangu
+RIDGEBACK NORTHGATE,R10652,2026-09-12T12:33:21,Harsh Acceleration,38889963,Vusi,Mahlangu
+RIDGEBACK NORTHGATE,R10652,2026-09-12T12:40:14,Unit (Time/GPS) Update Level,38890210,Vusi,Mahlangu
+Ridgeback Northgate,R10652,2026-09-12T13:10:12,Unit (Time/GPS) Update Level,38891317,Vusi,Mahlangu
+Ridgeback Riverside,R32619,2026-09-12T06:10:14,Power Up,22446876,,
+Ridgeback Riverside,R32619,2026-09-12T06:12:22,Driver Change,22446876,Kavitha,Coetzee
+Ridgeback Riverside,R32619,2026-09-12T06:36:07,Harsh Acceleration,22448080,Kavitha,Coetzee
+RIDGEBACK RIVERSIDE,R32619,2026-09-12T06:42:18,Unit (Time/GPS) Update Level,22448397,Kavitha,Coetzee
+Ridgeback Riverside,R32619,2026-09-12T07:12:17,Unit (Time/GPS) Update Level,22449234,Kavitha,Coetzee
+Ridgeback Riverside,R32619,2026-09-12T07:42:18,Unit (Time/GPS) Update Level,22450475,Kavitha,Coetzee
+Ridgeback Riverside,R32619,2026-09-12T08:42:10,Unit (Time/GPS) Update Level,22452862,Kavitha,Coetzee
+Ridgeback Riverside,R32619,2026-09-12T08:12:15,Unit (Time/GPS) Update Level,22451983,Kavitha,Coetzee
+Ridgeback Riverside,R32619,2026-09-12T09:12:07,Unit (Time/GPS) Update Level,22453944,Kavitha,Coetzee
+Ridgeback Riverside,R32619,2026-09-12T09:42:05,Unit (Time/GPS) Update Level,22455483,Kavitha,Coetzee
+Ridgeback Riverside,R32619,2026-09-12T10:12:10,Unit (Time/GPS) Update Level,22456486,Kavitha,Coetzee
+Ridgeback Riverside,R32619,2026-09-12T10:42:12,Unit (Time/GPS) Update Level,22457333,Kavitha,Coetzee
+Ridgeback Riverside,R32619,2026-09-12T11:12:12,Unit (Time/GPS) Update Level,22458253,Kavitha,Coetzee
+RIDGEBACK RIVERSIDE,R32619,2026-09-12T11:42:16,Unit (Time/GPS) Update Level,22459137,Kavitha,Coetzee
+Ridgeback Riverside,R32619,2026-09-12T12:12:19,Unit (Time/GPS) Update Level,22460013,Kavitha,Coetzee
+Ridgeback Riverside,R32619,2026-09-12T12:42:16,Unit (Time/GPS) Update Level,22460969,Kavitha,Coetzee
+Ridgeback Riverside,R32619,2026-09-12T13:12:17,Unit (Time/GPS) Update Level,22461802,Kavitha,Coetzee
+Ridgeback Riverside,R32619,2026-09-12T13:42:15,Unit (Time/GPS) Update Level,22462802,Kavitha,Coetzee
+Ridgeback Riverside,R48547,2026-09-12T06:03:26,Power Up,31337496,,
+Ridgeback Riverside,R48547,2026-09-12T06:04:21,Driver Change,31337496,Kyle,Steyn
+Ridgeback Riverside,R48547,2026-09-12T06:34:24,Unit (Time/GPS) Update Level,31338842,Kyle,Steyn
+Ridgeback Riverside,R48547,2026-09-12T06:16:34,Impact,31338044,Kyle,Steyn
+Ridgeback Riverside,R48547,2026-09-12T07:04:28,Unit (Time/GPS) Update Level,31339765,Kyle,Steyn
+Ridgeback Riverside,R48547,2026-09-12T07:34:32,Unit (Time/GPS) Update Level,31341323,Kyle,Steyn
+Ridgeback Riverside,R48547,2026-09-12T07:24:03,Harsh Braking,31340782,Kyle,Steyn
+Ridgeback Riverside,R48547,2026-09-12T07:37:01,Harsh Acceleration,31341450,Kyle,Steyn
+Ridgeback Riverside,R48547,2026-09-12T07:50:48,Speeding,31342155,Kyle,Steyn
+Ridgeback Riverside,R48547,2026-09-12T08:04:30,Unit (Time/GPS) Update Level,31342857,Kyle,Steyn
+Ridgeback Riverside,R48547,2026-09-12T08:34:25,Unit (Time/GPS) Update Level,31344104,Kyle,Steyn
+Ridgeback Riverside,R48547,2026-09-12T09:00:24,Excess Idle,31345201,Kyle,Steyn
+Ridgeback Riverside,R48547,2026-09-12T09:04:24,Unit (Time/GPS) Update Level,31345371,Kyle,Steyn
+Ridgeback Riverside,R48547,2026-09-12T09:34:24,Unit (Time/GPS) Update Level,31346792,Kyle,Steyn
+Ridgeback Riverside,R48547,2026-09-12T10:04:19,Unit (Time/GPS) Update Level,31348020,Kyle,Steyn
+Ridgeback Riverside,R48547,2026-09-12T10:34:15,Unit (Time/GPS) Update Level,31349109,Kyle,Steyn
+Ridgeback Riverside,R48547,2026-09-12T11:04:18,Unit (Time/GPS) Update Level,31350537,Kyle,Steyn
+Ridgeback Riverside,R48547,2026-09-12T11:34:16,Unit (Time/GPS) Update Level,31351391,Kyle,Steyn
+Ridgeback Riverside,R48547,2026-09-12T12:04:21,Unit (Time/GPS) Update Level,31352989,Kyle,Steyn
+Ridgeback Riverside,R48547,2026-09-12T12:34:17,Unit (Time/GPS) Update Level,31354157,Kyle,Steyn
+Ridgeback Riverside,R48547,2026-09-12T13:04:12,Unit (Time/GPS) Update Level,31355250,Kyle,Steyn
+Ridgeback Riverside,R48547,2026-09-12T14:04:16,Unit (Time/GPS) Update Level,31357288,Kyle,Steyn
+Ridgeback Riverside, R48547,2026-09-12T13:34:13,Unit (Time/GPS) Update Level,31356069,Kyle,Steyn
+Ridgeback Airport,R54565,2026-09-12T06:09:41,Power Up,36547603,,
+Ridgeback Airport,R54565,2026-09-12T06:11:54,Driver Change,36547603,Kagiso,Petersen
+Ridgeback Airport,R54565,2026-09-12T06:41:54,Unit (Time/GPS) Update Level,36548366,Kagiso,Petersen
+Ridgeback Airport,R54565,2026-09-12T07:11:51,Unit (Time/GPS) Update Level,36548964,Kagiso,Petersen
+Ridgeback Airport,R54565,2026-09-12T08:11:53,Unit (Time/GPS) Update Level,36550229,Kagiso,Petersen
+Ridgeback Airport,R54565,2026-09-12T07:41:52,Unit (Time/GPS) Update Level,36549699,Kagiso,Petersen
+Ridgeback Airport,R54565,2026-09-12T08:41:57,Unit (Time/GPS) Update Level,36551003,Kagiso,Petersen
+Ridgeback Airport,R54565,2026-09-12T09:11:58,Unit (Time/GPS) Update Level,36551694,Kagiso,Petersen
+Ridgeback Airport,R54565,2026-09-12T09:42:02,Unit (Time/GPS) Update Level,36552347,Kagiso,Petersen
+RIDGEBACK AIRPORT,R54565,2026-09-12T10:11:58,Unit (Time/GPS) Update Level,36553023,Kagiso,Petersen
+RIDGEBACK AIRPORT,R54565,2026-09-12T10:41:56,Unit (Time/GPS) Update Level,36553512,Kagiso,Petersen
+Ridgeback Airport,R54565,2026-09-12T11:11:54,Unit (Time/GPS) Update Level,36554171,Kagiso,Petersen
+Ridgeback Airport,R54565,2026-09-12T11:41:58,Unit (Time/GPS) Update Level,36554850,Kagiso,Petersen
+Ridgeback Airport,R54565,2026-09-12T12:11:56,Unit (Time/GPS) Update Level,36555678,Kagiso,Petersen
+Ridgeback Airport,R54565,2026-09-12T12:42:00,Unit (Time/GPS) Update Level,36556106,Kagiso,Petersen
+Ridgeback Airport,R54565,2026-09-12T13:11:57,Unit (Time/GPS) Update Level,36556881,,
+Ridgeback Airport,R54565,2026-09-12T14:11:57,Unit (Time/GPS) Update Level,36558351,Kagiso,Petersen
+Ridgeback Airport,R54565,2026-09-12T13:42:01,Unit (Time/GPS) Update Level,36557593,Kagiso,Petersen
+Ridgeback Northgate,R65738,2026-09-12T06:11:29,Power Up,31700599,,
+Ridgeback Northgate,R65738,2026-09-12T06:13:01,Driver Change,31700599,Refilwe,Petersen
+Ridgeback Northgate,R65738,2026-09-12T06:42:56,Unit (Time/GPS) Update Level,31702057,Refilwe,Petersen
+Ridgeback Northgate,R65738,2026-09-12T07:12:52,Unit (Time/GPS) Update Level,31702794,Refilwe,Petersen
+Ridgeback Northgate,R65738,2026-09-12T07:42:56,Unit (Time/GPS) Update Level,31703601,Refilwe,Petersen
+Ridgeback Northgate,R65738,2026-09-12T08:12:56,Unit (Time/GPS) Update Level,31704944,Refilwe,Petersen
+Ridgeback Northgate,R65738,2026-09-12T08:42:54,Unit (Time/GPS) Update Level,31705807,Refilwe,Petersen
+Ridgeback Northgate,R65738,2026-09-12T08:42:54,Unit (Time/GPS) Update Level,31705807,Refilwe,Petersen
+Ridgeback Northgate,R65738,2026-09-12T09:12:55,Unit (Time/GPS) Update Level,31707128,Refilwe,Petersen
+Ridgeback Northgate,R65738,2026-09-12T09:42:51,Unit (Time/GPS) Update Level,31708109,Refilwe,Petersen
+Ridgeback Northgate,R65738,2026-09-12T10:12:55,Unit (Time/GPS) Update Level,31709007,Refilwe,Petersen
+Ridgeback Northgate,R65738,2026-09-12T10:43:00,Unit (Time/GPS) Update Level,31709801,Refilwe,Petersen
+Ridgeback Northgate,R65738,2026-09-12T11:12:59,Unit (Time/GPS) Update Level,31710965,Refilwe,Petersen
+Ridgeback Northgate,R65738,2026-09-12T11:42:57,Unit (Time/GPS) Update Level,31712425,Refilwe,Petersen
+Ridgeback Northgate,R65738,2026-09-12T12:13:00,Unit (Time/GPS) Update Level,31713891,Refilwe,Petersen
+Ridgeback Northgate,R65738,2026-09-12T12:42:57,Unit (Time/GPS) Update Level,31715227,Refilwe,Petersen
+Ridgeback Northgate,R65738,2026-09-12T13:13:02,Unit (Time/GPS) Update Level,31716584,Refilwe,Petersen
+Ridgeback Harbour,R80275,2026-09-12T06:01:50,Power Up,19799083,,
+Ridgeback Harbour,R80275,2026-09-12T06:04:07,Driver Change,19799083,Pieter,Cele
+Ridgeback Harbour,R80275,2026-09-12T06:34:09,Unit (Time/GPS) Update Level,19800150,Pieter,Cele
+Ridgeback Harbour,R80275,2026-09-12T06:42:27,Harsh Braking,19800405,Pieter,Cele
+Ridgeback Harbour,R80275,2026-09-12T07:04:14,Unit (Time/GPS) Update Level,19801073,Pieter,Cele
+Ridgeback Harbour,R80275,2026-09-12T07:34:13,Unit (Time/GPS) Update Level,19801848,Pieter,Cele
+Ridgeback Harbour,R80275,2026-09-12T08:04:17,Unit (Time/GPS) Update Level,19802766,Pieter,Cele
+Ridgeback Harbour,R80275,2026-09-12T08:34:15,Unit (Time/GPS) Update Level,19803517,Pieter,Cele
+Ridgeback Harbour,R80275,2026-09-12T09:04:16,Unit (Time/GPS) Update Level,19804236,Pieter,Cele
+Ridgeback Harbour,R80275,2026-09-12T09:34:20,Unit (Time/GPS) Update Level,19805098,Pieter,Cele
+Ridgeback Harbour,R80275,2026-09-12T10:04:22,Unit (Time/GPS) Update Level,19806085,Pieter,Cele
+Ridgeback Harbour,R80275,2026-09-12T11:04:28,Unit (Time/GPS) Update Level,19807203,Pieter,Cele
+Ridgeback Harbour,R80275,2026-09-12T11:32:58,Speeding,19807829,Pieter,Cele
+Ridgeback Harbour,R80275,2026-09-12T10:34:26,Unit (Time/GPS) Update Level,19806656,Pieter,Cele
+Ridgeback  Harbour ,R80275,2026-09-12T11:34:30,Unit (Time/GPS) Update Level,19807862,Pieter,Cele
+Ridgeback Harbour,R80275,2026-09-12T12:04:34,Unit (Time/GPS) Update Level,19808631,Pieter,Cele
