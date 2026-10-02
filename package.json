@@ -1,0 +1,11 @@
+{
+  "name": "ridgeback-fleet-data",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Haibot assessment: Ridgeback Logistics fleet telemetry pipeline, dashboard and chat",
+  "scripts": {
+    "test": "node --test pipeline/tests/*.test.js",
+    "clean:report": "node pipeline/scripts/clean-all.js"
+  },
+  "engines": { "node": ">=18" }
+}
