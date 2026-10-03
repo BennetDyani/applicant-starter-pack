@@ -1,6 +1,6 @@
 # Data model and cleaning rules
 
-All tables live in the `fleet` schema in Postgres (Supabase). The DDL is in [`pipeline/sql/`](../pipeline/sql), applied in order `001` to `007`.
+All tables live in the `fleet` schema in Postgres (Supabase). The DDL is in [`pipeline/sql/`](../pipeline/sql), applied in order `001` to `008`.
 
 ## Entity relationship diagram
 
