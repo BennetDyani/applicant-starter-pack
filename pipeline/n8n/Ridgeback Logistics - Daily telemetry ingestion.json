@@ -169,7 +169,7 @@
       "credentials": {
         "postgres": {
           "id": "jG9GKBbOTB4e4gqu",
-          "name": "Postgres account"
+          "name": "Postgres - fleet_pipeline"
         }
       }
     },
@@ -206,7 +206,7 @@
       "credentials": {
         "postgres": {
           "id": "jG9GKBbOTB4e4gqu",
-          "name": "Postgres account"
+          "name": "Postgres - fleet_pipeline"
         }
       }
     },
@@ -267,7 +267,7 @@
       "credentials": {
         "postgres": {
           "id": "jG9GKBbOTB4e4gqu",
-          "name": "Postgres account"
+          "name": "Postgres - fleet_pipeline"
         }
       },
       "onError": "continueErrorOutput"
@@ -304,7 +304,7 @@
       "credentials": {
         "postgres": {
           "id": "jG9GKBbOTB4e4gqu",
-          "name": "Postgres account"
+          "name": "Postgres - fleet_pipeline"
         }
       }
     },
@@ -518,7 +518,7 @@
       ]
     }
   },
-  "active": false,
+  "active": true,
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",

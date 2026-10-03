@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ridgeback Fleet</title>
+  <meta name="description" content="Ridgeback Logistics fleet dashboard: run hours, safety events, driver activity and data quality, with a chat assistant.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="assets/theme.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V8h7l3 4h5v6M3 18h18M6 18a2 2 0 1 0 4 0M15 18a2 2 0 1 0 4 0M14 12V5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div>
+        <h1>Ridgeback Fleet</h1>
+        <p class="sub">Forklifts, reach trucks and pallet trucks across four branches</p>
+      </div>
+    </div>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch colour theme" title="Switch colour theme">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+    </button>
+  </header>
+
+  <div class="layout">
+    <main id="main" class="dash" aria-busy="true">
+
+      <div class="filters" role="group" aria-label="Period">
+        <label for="period">Period</label>
+        <select id="period" disabled>
+          <option value="">Whole week</option>
+        </select>
+        <span class="freshness" id="freshness"></span>
+        <a class="jump" href="#t-chat">Ask a question ↓</a>
+      </div>
+
+      <div class="banner" id="banner" hidden role="alert"></div>
+
+      <section class="kpis" aria-label="Key figures">
+        <div class="tile hero">
+          <span class="label">Run hours</span>
+          <span class="value" id="k-hours">–</span>
+          <span class="note" id="k-hours-note">&nbsp;</span>
+        </div>
+        <div class="tile"><span class="label">Active machines</span><span class="value" id="k-machines">–</span><span class="note" id="k-machines-note">&nbsp;</span></div>
+        <div class="tile"><span class="label">Safety events</span><span class="value" id="k-events">–</span><span class="note" id="k-events-note">&nbsp;</span></div>
+        <div class="tile"><span class="label">Impacts</span><span class="value" id="k-impacts">–</span><span class="note" id="k-impacts-note">&nbsp;</span></div>
+        <div class="tile"><span class="label">Active drivers</span><span class="value" id="k-drivers">–</span><span class="note">logged on at least once</span></div>
+      </section>
+
+      <section class="card span-2" aria-labelledby="t-daily">
+        <header class="card-head">
+          <div>
+            <h2 id="t-daily">Run hours by branch</h2>
+            <p class="desc" id="d-daily">Motor running time per day</p>
+          </div>
+          <button class="table-toggle" type="button" aria-expanded="false" data-target="daily">Table</button>
+        </header>
+        <ul class="legend" id="legend-daily" aria-label="Branches"></ul>
+        <div class="chart-box tall"><canvas id="c-daily" role="img" aria-label="Run hours per day for each branch"></canvas></div>
+        <div class="table-wrap" id="tbl-daily" hidden></div>
+      </section>
+
+      <section class="card" aria-labelledby="t-safety">
+        <header class="card-head">
+          <div>
+            <h2 id="t-safety">Safety events by branch</h2>
+            <p class="desc">Count of each event type</p>
+          </div>
+          <button class="table-toggle" type="button" aria-expanded="false" data-target="safety">Table</button>
+        </header>
+        <ul class="legend" id="legend-safety" aria-label="Branches"></ul>
+        <div class="chart-box tall"><canvas id="c-safety" role="img" aria-label="Safety events by type for each branch"></canvas></div>
+        <div class="table-wrap" id="tbl-safety" hidden></div>
+      </section>
+
+      <section class="card" aria-labelledby="t-drivers">
+        <header class="card-head">
+          <div>
+            <h2 id="t-drivers">Drivers with the most safety events</h2>
+            <p class="desc">Top 8, with events per run hour for a fair comparison</p>
+          </div>
+        </header>
+        <div class="table-wrap always" id="tbl-drivers"></div>
+        <p class="footnote" id="drivers-note"></p>
+      </section>
+
+      <section class="card span-2" aria-labelledby="t-machines">
+        <header class="card-head">
+          <div>
+            <h2 id="t-machines">Run hours by machine</h2>
+            <p class="desc">All 30 machines, highest first</p>
+          </div>
+          <button class="table-toggle" type="button" aria-expanded="false" data-target="machines">Table</button>
+        </header>
+        <div class="chart-box machines"><canvas id="c-machines" role="img" aria-label="Run hours for each machine"></canvas></div>
+        <div class="table-wrap" id="tbl-machines" hidden></div>
+      </section>
+
+      <section class="card span-2" aria-labelledby="t-quality">
+        <header class="card-head">
+          <div>
+            <h2 id="t-quality">Data quality</h2>
+            <p class="desc">Each daily file: what was loaded, what was rejected and why</p>
+          </div>
+        </header>
+        <div class="dq-summary" id="dq-summary"></div>
+        <div class="table-wrap always" id="tbl-quality"></div>
+      </section>
+    </main>
+
+    <aside class="chat" id="chat" aria-labelledby="t-chat">
+      <header class="chat-head">
+        <h2 id="t-chat">Ask about the fleet</h2>
+        <p class="desc">Answers come only from the telematics data. Numbers are looked up, never guessed.</p>
+      </header>
+      <div class="messages" id="messages" aria-live="polite">
+        <div class="suggestions" id="suggestions">
+          <button type="button">Which forklift had the most run hours on Tuesday?</button>
+          <button type="button">Which driver had the most impacts this week?</button>
+          <button type="button">Compare the branches on safety events this week</button>
+          <button type="button">Was any data missing or rejected?</button>
+        </div>
+      </div>
+      <form class="composer" id="composer">
+        <label class="sr-only" for="question">Your question</label>
+        <textarea id="question" rows="2" maxlength="500" placeholder="Ask a question about machines, drivers or branches" required></textarea>
+        <div class="composer-row">
+          <span class="count" id="count">0 / 500</span>
+          <button type="submit" class="send" id="send">Ask</button>
+        </div>
+      </form>
+    </aside>
+  </div>
+
+  <footer class="foot">
+    Data: Ridgeback daily telematics files, loaded at 04:00 SAST. Run hours come from the RunHours counter; heartbeats are not counted as events.
+  </footer>
+
+  <script src="vendor/chart.umd.min.js"></script>
+  <script src="main.js" type="module"></script>
+</body>
+</html>

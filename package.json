@@ -5,7 +5,10 @@
   "description": "Haibot assessment: Ridgeback Logistics fleet telemetry pipeline, dashboard and chat",
   "scripts": {
     "test": "node --test pipeline/tests/*.test.js",
-    "clean:report": "node pipeline/scripts/clean-all.js"
+    "clean:report": "node pipeline/scripts/clean-all.js",
+    "dev:app": "node scripts/dev-app.mjs"
   },
-  "engines": { "node": ">=18" }
+  "engines": {
+    "node": ">=18"
+  }
 }
