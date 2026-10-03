@@ -32,7 +32,14 @@ app/                 your dashboard and chat (Task 3)
 
 ## How to run the pipeline
 
-_Commands or steps to load the files in `data/incoming/` into your database._
+An n8n workflow (export in [`pipeline/n8n/`](pipeline/n8n)) runs every day at **04:00 SAST** and loads each new or changed file in `data/incoming/` into Postgres. Full details, guarantees and results: [`pipeline/README.md`](pipeline/README.md).
+
+1. Apply [`pipeline/sql/`](pipeline/sql) `001`–`006` to Postgres and set passwords for the `fleet_pipeline` and `fleet_reader` roles.
+2. In n8n, create a Postgres credential for `fleet_pipeline` (Supabase Session pooler, SSL required).
+3. Import the workflow JSON, select the credential on the four Postgres nodes, and **Execute workflow** (or activate it for the 04:00 schedule).
+4. Check `fleet.ingestion_runs` for one row per file: rows read, loaded, already loaded, rejected, status.
+
+Reloading is safe: running all seven files a second time inserts 0 rows. A file that fails is logged as `failed` and the rest still load; it is retried on the next run.
 
 ## Model used and why
 
@@ -62,6 +69,8 @@ Cleaning code: [`pipeline/src/clean.js`](pipeline/src/clean.js). Tests: `npm tes
 - **Late-arriving events** (older than the file's data date) are kept and flagged. Ones already loaded from the previous file are skipped by the unique key.
 - **Exact duplicate rows** within a file are rejected and recorded with the reason `duplicate_row_in_file`.
 - **Driver names** that differ only in case are the same driver.
+- **File source:** for the assessment the pipeline reads files from this repo's `data/incoming/` through the GitHub API, standing in for the client's SFTP folder. A file counts as already loaded when its name and content hash match a previous successful load.
+- **Database TLS:** n8n Cloud connects to Supabase over TLS with certificate verification relaxed (Supabase uses its own CA). In production the Supabase CA certificate would be installed so the certificate is verified too.
 
 ## AI tools used
 

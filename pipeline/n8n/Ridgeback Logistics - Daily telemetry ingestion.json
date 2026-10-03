@@ -1,0 +1,553 @@
+{
+  "name": "Ridgeback Logistics - Daily telemetry ingestion",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "f5e77a01-6346-4303-8753-81972098007a",
+      "name": "Run manually",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ctx-started",
+              "name": "run_started_at",
+              "value": "={{ $now.toISO() }}",
+              "type": "string"
+            },
+            {
+              "id": "ctx-trigger",
+              "name": "triggered_by",
+              "value": "={{ $execution.mode === \"production\" ? \"schedule\" : \"manual\" }}",
+              "type": "string"
+            },
+            {
+              "id": "ctx-reprocess",
+              "name": "reprocess_all",
+              "value": false,
+              "type": "boolean"
+            },
+            {
+              "id": "ctx-repo",
+              "name": "repo",
+              "value": "BennetDyani/applicant-starter-pack",
+              "type": "string"
+            },
+            {
+              "id": "ctx-branch",
+              "name": "branch",
+              "value": "main",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ea5f291d-d83e-4767-8a77-7ed567480113",
+      "name": "Set run context",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://raw.githubusercontent.com/{{ $json.repo }}/{{ $json.branch }}/data/machine_list.csv",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "18afff3b-019a-4e8e-acc1-5773069a6f61",
+      "name": "Get machine list",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        480,
+        304
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000
+    },
+    {
+      "parameters": {
+        "url": "=https://api.github.com/repos/{{ $(\"Set run context\").first().json.repo }}/contents/data/incoming?ref={{ $(\"Set run context\").first().json.branch }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "911ef9fe-b86f-4afe-9437-a07979255ef6",
+      "name": "List incoming files",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        720,
+        304
+      ],
+      "executeOnce": true,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "is-telemetry-file",
+              "leftValue": "={{ $json.name }}",
+              "operator": {
+                "operation": "endsWith",
+                "type": "string"
+              },
+              "rightValue": "_DailyTelemetryData.csv"
+            },
+            {
+              "id": "is-file",
+              "leftValue": "={{ $json.type }}",
+              "operator": {
+                "operation": "equals",
+                "type": "string"
+              },
+              "rightValue": "file"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "43fc9672-cc8c-4fe5-a819-ae21b9c5f883",
+      "name": "Keep daily telemetry files",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        960,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "select coalesce(json_agg(json_build_object('file_name', file_name, 'checksum', checksum)), '[]'::json) as loaded from fleet.source_files;",
+        "options": {}
+      },
+      "id": "4f9a248d-06b0-41c3-b83c-8c093a9bf618",
+      "name": "Get already loaded files",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.7,
+      "position": [
+        1200,
+        304
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "postgres": {
+          "id": "jG9GKBbOTB4e4gqu",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Decide which files to load: new files, files whose content changed, and files that\n// failed before (failed files are never registered in fleet.source_files, so they retry).\nconst ctx = $('Set run context').first().json;\nlet loaded = $input.first().json.loaded || [];\nif (typeof loaded === 'string') loaded = JSON.parse(loaded);\nconst loadedChecksums = new Map(loaded.map((f) => [f.file_name, f.checksum]));\n\nreturn $('Keep daily telemetry files').all()\n  .map((i) => i.json)\n  .filter((f) => ctx.reprocess_all === true || loadedChecksums.get(f.name) !== f.sha)\n  .sort((a, b) => a.name.localeCompare(b.name))   // load in date order\n  .map((f) => ({ json: { file_name: f.name, sha: f.sha, download_url: f.download_url, size: f.size } }));\n"
+      },
+      "id": "65094d41-3113-43ca-ac5e-73926e0bc6fc",
+      "name": "Pick files to load",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1440,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "select file_name, status, rows_read, rows_loaded, rows_already_loaded, rows_rejected, error_message from fleet.ingestion_runs where started_at = $1::timestamptz order by file_name;",
+        "options": {
+          "queryReplacement": "={{ [ $(\"Set run context\").first().json.run_started_at ] }}"
+        }
+      },
+      "id": "3a7855ed-0a3d-4e78-8de2-510bbb26fe2f",
+      "name": "Summarise this run",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.7,
+      "position": [
+        1920,
+        144
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "postgres": {
+          "id": "jG9GKBbOTB4e4gqu",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.download_url }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "e3d571d5-2ae8-4cb4-9053-7f35bd11a1d8",
+      "name": "Download file",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        1920,
+        464
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Cleaning rules: generated from pipeline/src/clean.js. Edit that file, not this node.\nconst EVENT_TYPES = {\n  'power up': { code: 'POWER_UP', counts_as_event: true, is_safety: false },\n  'driver change': { code: 'DRIVER_CHANGE', counts_as_event: true, is_safety: false },\n  'unit (time/gps) update level': { code: 'HEARTBEAT', counts_as_event: false, is_safety: false },\n  impact: { code: 'IMPACT', counts_as_event: true, is_safety: true },\n  'harsh braking': { code: 'HARSH_BRAKING', counts_as_event: true, is_safety: true },\n  'harsh acceleration': { code: 'HARSH_ACCELERATION', counts_as_event: true, is_safety: true },\n  speeding: { code: 'SPEEDING', counts_as_event: true, is_safety: true },\n  'excess idle': { code: 'EXCESS_IDLE', counts_as_event: true, is_safety: true },\n};\n\nconst HEADER_ALIASES = {\n  dateandtime: 'event_time',\n  refno: 'ref_no',\n  branchname: 'branch',\n  txflagstrings: 'event_type',\n  runhours: 'run_hours',\n  drivername: 'driver_first_name',\n  driversurname: 'driver_surname',\n};\nconst REQUIRED_COLUMNS = Object.values(HEADER_ALIASES);\n\nconst REJECT = {\n  WRONG_COLUMN_COUNT: 'wrong_column_count',\n  REPEATED_HEADER: 'repeated_header_row',\n  MISSING_VALUE: 'missing_required_value',\n  INVALID_TIMESTAMP: 'invalid_timestamp',\n  TIMESTAMP_AFTER_DELIVERY: 'timestamp_after_file_delivery',\n  UNKNOWN_MACHINE: 'machine_not_in_machine_list',\n  UNKNOWN_EVENT_TYPE: 'unknown_event_type',\n  INVALID_RUN_HOURS: 'invalid_run_hours',\n  DUPLICATE_IN_FILE: 'duplicate_row_in_file',\n};\n\nconst collapse = (s) => String(s ?? '').replace(/\\s+/g, ' ').trim();\nconst headerKey = (s) => collapse(s).toLowerCase().replace(/[^a-z0-9]/g, '');\n\nfunction normaliseBranch(raw) {\n  const s = collapse(raw).replace(/^ridgeback\\s*/i, '');\n  return s ? titleCase(s) : null;\n}\n\nconst normaliseRef = (raw) => collapse(raw).toUpperCase();\n\nfunction titleCase(s) {\n  return collapse(s)\n    .toLowerCase()\n    .replace(/(^|[\\s'-])([a-z])/g, (_, sep, ch) => sep + ch.toUpperCase());\n}\n\nfunction normaliseDriver(first, surname) {\n  const f = collapse(first);\n  const s = collapse(surname);\n  if (!f && !s) return null;\n  const first_name = titleCase(f);\n  const last_name = titleCase(s);\n  return {\n    first_name,\n    surname: last_name,\n    driver_key: `${first_name} ${last_name}`.trim().toLowerCase(),\n  };\n}\n\nfunction parseTimestamp(raw) {\n  const s = collapse(raw);\n  let m = s.match(/^(\\d{4})-(\\d{2})-(\\d{2})[T ](\\d{2}):(\\d{2}):(\\d{2})$/);\n  let y, mo, d, h, mi, se;\n  if (m) [, y, mo, d, h, mi, se] = m;\n  else {\n    m = s.match(/^(\\d{2})\\/(\\d{2})\\/(\\d{4})[T ](\\d{2}):(\\d{2}):(\\d{2})$/);\n    if (!m) return null;\n    [, d, mo, y, h, mi, se] = m;\n  }\n  const dt = new Date(Date.UTC(+y, +mo - 1, +d, +h, +mi, +se));\n  const valid =\n    dt.getUTCFullYear() === +y && dt.getUTCMonth() === +mo - 1 && dt.getUTCDate() === +d &&\n    +h < 24 && +mi < 60 && +se < 60;\n  return valid ? `${y}-${mo}-${d} ${h}:${mi}:${se}` : null;\n}\n\nfunction datesFromFileName(fileName) {\n  const m = String(fileName).match(/(\\d{4})-(\\d{2})-(\\d{2})_DailyTelemetryData\\.csv$/i);\n  if (!m) return { delivery_date: null, data_date: null };\n  const delivery = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3]));\n  const data = new Date(delivery.getTime() - 86400000);\n  return {\n    delivery_date: delivery.toISOString().slice(0, 10),\n    data_date: data.toISOString().slice(0, 10),\n  };\n}\n\nfunction parseCsv(text) {\n  const src = String(text).replace(/^﻿/, '');\n  const records = [];\n  let field = '', fields = [], inQuotes = false, line = 1, startLine = 1, raw = '';\n  for (let i = 0; i < src.length; i++) {\n    const c = src[i];\n    if (inQuotes) {\n      if (c === '\"' && src[i + 1] === '\"') { field += '\"'; raw += '\"\"'; i++; continue; }\n      if (c === '\"') { inQuotes = false; raw += c; continue; }\n      if (c === '\\n') line++;\n      field += c; raw += c; continue;\n    }\n    if (c === '\"') { inQuotes = true; raw += c; continue; }\n    if (c === ',') { fields.push(field); field = ''; raw += c; continue; }\n    if (c === '\\r') continue;\n    if (c === '\\n') {\n      fields.push(field);\n      records.push({ line: startLine, fields, raw });\n      field = ''; fields = []; raw = ''; line++; startLine = line; continue;\n    }\n    field += c; raw += c;\n  }\n  if (field !== '' || fields.length) { fields.push(field); records.push({ line: startLine, fields, raw }); }\n  return records.filter((r) => r.raw.trim() !== '');\n}\n\nfunction buildMachineIndex(machineListCsv) {\n  const recs = parseCsv(machineListCsv);\n  const header = recs[0].fields.map(headerKey);\n  const iRef = header.indexOf('refno'), iBranch = header.indexOf('branchname'), iType = header.indexOf('machinetype');\n  const index = new Map();\n  for (const r of recs.slice(1)) {\n    const ref = normaliseRef(r.fields[iRef]);\n    if (!ref) continue;\n    index.set(ref, {\n      ref_no: ref,\n      branch: normaliseBranch(r.fields[iBranch]),\n      machine_type: collapse(r.fields[iType]),\n    });\n  }\n  return index;\n}\n\nfunction cleanFile({ fileName, text, machines }) {\n  const { delivery_date, data_date } = datesFromFileName(fileName);\n  const records = parseCsv(text);\n  if (!records.length) throw new Error('File is empty');\n\n  const headerRec = records[0];\n  const cols = headerRec.fields.map((h) => HEADER_ALIASES[headerKey(h)]);\n  const missing = REQUIRED_COLUMNS.filter((c) => !cols.includes(c));\n  if (missing.length) throw new Error(`Missing required column(s): ${missing.join(', ')}`);\n  const at = Object.fromEntries(cols.map((c, i) => [c, i]).filter(([c]) => c));\n  const headerSignature = headerRec.fields.map(headerKey).join('|');\n\n  const rows = [];\n  const rejected = [];\n  const seen = new Set();\n  let lateRows = 0;\n  let branchMismatches = 0;\n  const reject = (rec, reason, detail) =>\n    rejected.push({ line_no: rec.line, raw_line: rec.raw, reason, detail: detail ?? null });\n\n  for (const rec of records.slice(1)) {\n    const f = rec.fields;\n\n    if (f.map(headerKey).join('|') === headerSignature) { reject(rec, REJECT.REPEATED_HEADER); continue; }\n    if (f.length !== headerRec.fields.length) {\n      reject(rec, REJECT.WRONG_COLUMN_COUNT, `expected ${headerRec.fields.length}, got ${f.length}`);\n      continue;\n    }\n\n    const get = (col) => f[at[col]];\n    const refNo = normaliseRef(get('ref_no'));\n    const typeRaw = collapse(get('event_type'));\n    const timeRaw = collapse(get('event_time'));\n    const rhRaw = collapse(get('run_hours'));\n    if (!refNo || !typeRaw || !timeRaw || !rhRaw) { reject(rec, REJECT.MISSING_VALUE); continue; }\n\n    const eventTime = parseTimestamp(timeRaw);\n    if (!eventTime) { reject(rec, REJECT.INVALID_TIMESTAMP, timeRaw); continue; }\n    const eventDate = eventTime.slice(0, 10);\n    if (delivery_date && eventDate >= delivery_date) {\n      reject(rec, REJECT.TIMESTAMP_AFTER_DELIVERY, eventTime);\n      continue;\n    }\n\n    const machine = machines.get(refNo);\n    if (!machine) { reject(rec, REJECT.UNKNOWN_MACHINE, refNo); continue; }\n\n    const type = EVENT_TYPES[typeRaw.toLowerCase()];\n    if (!type) { reject(rec, REJECT.UNKNOWN_EVENT_TYPE, typeRaw); continue; }\n\n    if (!/^\\d+$/.test(rhRaw)) { reject(rec, REJECT.INVALID_RUN_HOURS, rhRaw); continue; }\n    const runHours = Number(rhRaw);\n\n    const key = `${refNo}|${eventTime}|${type.code}|${runHours}`;\n    if (seen.has(key)) { reject(rec, REJECT.DUPLICATE_IN_FILE); continue; }\n    seen.add(key);\n\n    const reportedBranch = normaliseBranch(get('branch')) ?? machine.branch;\n    const isLate = data_date ? eventDate < data_date : false;\n    const branchMismatch = reportedBranch !== machine.branch;\n    if (isLate) lateRows++;\n    if (branchMismatch) branchMismatches++;\n\n    rows.push({\n      ref_no: refNo,\n      event_time: eventTime,\n      event_type: type.code,\n      run_hours_seconds: runHours,\n      reported_branch: reportedBranch,\n      driver: normaliseDriver(get('driver_first_name'), get('driver_surname')),\n      source_line: rec.line,\n      is_late_arrival: isLate,\n      branch_mismatch: branchMismatch,\n    });\n  }\n\n  const reasons = {};\n  for (const r of rejected) reasons[r.reason] = (reasons[r.reason] || 0) + 1;\n\n  return {\n    file: { file_name: fileName, delivery_date, data_date },\n    rows,\n    rejected,\n    summary: {\n      rows_read: records.length - 1,\n      rows_clean: rows.length,\n      rows_rejected: rejected.length,\n      rejected_by_reason: reasons,\n      late_arrival_rows: lateRows,\n      branch_mismatch_rows: branchMismatches,\n    },\n  };\n}\n\n// ---- Node logic ----\nconst file = $('Loop over files').first().json;\nconst ctx = $('Set run context').first().json;\nconst machines = buildMachineIndex($('Get machine list').first().json.data);\nconst text = $input.first().json.data;\nif (typeof text !== 'string' || !text.trim()) throw new Error('Downloaded file is empty');\n\nconst result = cleanFile({ fileName: file.file_name, text, machines });\nresult.file.checksum = file.sha;\nresult.machines = [...machines.values()];   // synced in the same transaction as the file\nresult.run = { started_at: ctx.run_started_at, triggered_by: ctx.triggered_by };\n\nreturn [{ json: { file_name: file.file_name, summary: result.summary, payload: JSON.stringify(result) } }];\n"
+      },
+      "id": "df005316-47f2-416f-af83-fa317eb31f0d",
+      "name": "Clean file",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2160,
+        464
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "select fleet.load_clean_file($1::jsonb) as result;",
+        "options": {
+          "queryReplacement": "={{ [ $json.payload ] }}"
+        }
+      },
+      "id": "d54f8e70-05a1-451e-b2db-a021d057d94f",
+      "name": "Load into database",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.7,
+      "position": [
+        2400,
+        464
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "jG9GKBbOTB4e4gqu",
+          "name": "Postgres account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "f582f9f7-9784-4572-aaf1-0c7926736674",
+      "name": "Loop over files",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1680,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "select fleet.log_failed_run($1, $2, $3::timestamptz, $4) as run_id;",
+        "options": {
+          "queryReplacement": "={{ [ $(\"Loop over files\").first().json.file_name, String(typeof $json.error === \"string\" ? $json.error : ($json.error?.message ?? $json.message ?? JSON.stringify($json))).slice(0, 2000), $(\"Set run context\").first().json.run_started_at, $(\"Set run context\").first().json.triggered_by ] }}"
+        }
+      },
+      "id": "f85fb115-88e4-4d18-882c-5c680a68ed59",
+      "name": "Log failed run",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.7,
+      "position": [
+        2400,
+        704
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "jG9GKBbOTB4e4gqu",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 4
+            }
+          ]
+        }
+      },
+      "id": "a4c64c87-f13d-46cd-aa3a-6096c50854af",
+      "name": "Daily 04:00 SAST",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Ridgeback Logistics: daily telemetry ingestion\n\nRuns every day at **04:00 SAST** (or manually). For each new or changed file in `data/incoming/` (stand-in for the client SFTP folder):\n1. Download, then clean with the rules in `pipeline/src/clean.js`\n2. Load in **one database transaction** via `fleet.load_clean_file()`, which also syncs the machine list\n3. Rejected rows are stored with a reason; every run is logged in `fleet.ingestion_runs`\n\n**Safe to rerun:** the events table has a natural unique key, so reloading a file adds nothing.\n**One bad file never stops the rest:** download, clean and load errors go to *Log failed run* and the loop moves on. Failed files retry on the next run.\n\nSet `reprocess_all` to true in *Set run context* to reload every file.",
+        "height": 420,
+        "width": 520,
+        "color": 4
+      },
+      "id": "0fef4a38-ae38-4a4b-b39e-0d70ee553b9a",
+      "name": "Sticky Note 67b9a744",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        416,
+        576
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Run manually": {
+      "main": [
+        [
+          {
+            "node": "Set run context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set run context": {
+      "main": [
+        [
+          {
+            "node": "Get machine list",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get machine list": {
+      "main": [
+        [
+          {
+            "node": "List incoming files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List incoming files": {
+      "main": [
+        [
+          {
+            "node": "Keep daily telemetry files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Keep daily telemetry files": {
+      "main": [
+        [
+          {
+            "node": "Get already loaded files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get already loaded files": {
+      "main": [
+        [
+          {
+            "node": "Pick files to load",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pick files to load": {
+      "main": [
+        [
+          {
+            "node": "Loop over files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download file": {
+      "main": [
+        [
+          {
+            "node": "Clean file",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Log failed run",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clean file": {
+      "main": [
+        [
+          {
+            "node": "Load into database",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Log failed run",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load into database": {
+      "main": [
+        [
+          {
+            "node": "Loop over files",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Log failed run",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop over files": {
+      "main": [
+        [
+          {
+            "node": "Summarise this run",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Download file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log failed run": {
+      "main": [
+        [
+          {
+            "node": "Loop over files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Daily 04:00 SAST": {
+      "main": [
+        [
+          {
+            "node": "Set run context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": true,
+    "timezone": "Africa/Johannesburg",
+    "saveManualExecutions": true,
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all"
+  },
+  "versionId": "865f3c55-3263-423e-93fd-98e281d3bccf",
+  "meta": {
+    "aiBuilderAssisted": true,
+    "builderVariant": "mcp",
+    "instanceId": "7fa6259b28508b0655ac2a998c2e1bbccce9cd2c905d0efc8343fd7f59c27863"
+  },
+  "nodeGroups": [
+    {
+      "id": "e25ed3e5-5e36-42cc-867c-88d1f3a00dd7",
+      "name": "Prepare run",
+      "nodeIds": [
+        "18afff3b-019a-4e8e-acc1-5773069a6f61",
+        "911ef9fe-b86f-4afe-9437-a07979255ef6",
+        "43fc9672-cc8c-4fe5-a819-ae21b9c5f883",
+        "4f9a248d-06b0-41c3-b83c-8c093a9bf618",
+        "65094d41-3113-43ca-ac5e-73926e0bc6fc"
+      ],
+      "description": "Fetch the machine list, list files in the incoming folder, and pick new or changed files to load in date order"
+    }
+  ],
+  "id": "ua6ftagvJTMITRaC",
+  "tags": []
+}
