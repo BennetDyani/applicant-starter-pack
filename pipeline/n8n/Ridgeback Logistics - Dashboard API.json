@@ -1,0 +1,147 @@
+{
+  "name": "Ridgeback Logistics - Dashboard API",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "ridgeback-dashboard",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "6e2406a4-f098-4482-b62f-53160a730e8d",
+      "name": "Dashboard request",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        304
+      ],
+      "webhookId": "1a057abb-f6d2-44b7-afae-d3e9ba30f16e",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "fClIsAIjR5uehF9a",
+          "name": "Ridgeback webhook secret"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "select fleet.dashboard_snapshot(nullif($1, '')::date, nullif($2, '')::date) as snapshot;",
+        "options": {
+          "queryReplacement": "={{ [ /^\\d{4}-\\d{2}-\\d{2}$/.test($json.query?.from ?? \"\") ? $json.query.from : \"\", /^\\d{4}-\\d{2}-\\d{2}$/.test($json.query?.to ?? \"\") ? $json.query.to : \"\" ] }}"
+        }
+      },
+      "id": "8314145e-47aa-4de7-9631-d5db257131cf",
+      "name": "Get dashboard snapshot",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        272,
+        304
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "gXwqWXzAATayWL6E",
+          "name": "Postgres - fleet_reader"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ typeof $json.snapshot === \"string\" ? JSON.parse($json.snapshot) : $json.snapshot }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "68d00831-456c-445f-a4f7-bb932c264df3",
+      "name": "Send snapshot",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        528,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { error: \"Dashboard data is unavailable right now. Please try again shortly.\" } }}",
+        "options": {
+          "responseCode": 503
+        }
+      },
+      "id": "7857488d-3cac-421d-9800-c52f33fa317c",
+      "name": "Send unavailable",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        528,
+        432
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Ridgeback dashboard API\n\nGET with the `x-ridgeback-key` header (called only by the Vercel proxy). Optional `?from=YYYY-MM-DD&to=YYYY-MM-DD`; anything else is ignored. Reads one JSON snapshot from `fleet.dashboard_snapshot()` as the read-only `fleet_reader` user. Database errors return 503 without details.",
+        "color": 4
+      },
+      "id": "b987dd2b-cdfa-418b-93e5-a20fa412eeb9",
+      "name": "About this workflow",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        560
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Dashboard request": {
+      "main": [
+        [
+          {
+            "node": "Get dashboard snapshot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get dashboard snapshot": {
+      "main": [
+        [
+          {
+            "node": "Send snapshot",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send unavailable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": true
+  },
+  "versionId": "99f01217-37e5-489c-a0d3-5d9ba6028e94",
+  "meta": {
+    "aiBuilderAssisted": true,
+    "builderVariant": "mcp",
+    "instanceId": "7fa6259b28508b0655ac2a998c2e1bbccce9cd2c905d0efc8343fd7f59c27863"
+  },
+  "nodeGroups": [],
+  "id": "6TIZubgfmFsgcnwL",
+  "tags": []
+}
