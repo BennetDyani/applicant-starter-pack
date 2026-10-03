@@ -8,7 +8,11 @@ export default async function handler(req, res) {
   if (req.method !== 'GET') return sendJson(res, 405, { error: 'Method not allowed' }, { allow: 'GET' });
   if (rateLimited(req, { limit: 60, windowMs: 60_000 })) return sendJson(res, 429, { error: 'Too many requests' });
 
-  const url = new URL(env('N8N_DASHBOARD_URL'));
+  let url;
+  try { url = new URL(env('N8N_DASHBOARD_URL')); env('N8N_WEBHOOK_SECRET'); } catch (err) {
+    console.error('dashboard misconfigured:', err.message);
+    return sendJson(res, 500, { error: 'Dashboard is not configured yet.' });
+  }
   const { from, to } = req.query || {};
   // Only pass through well-formed dates; anything else is ignored (whole period).
   if (ISO_DATE.test(String(from ?? '')) && ISO_DATE.test(String(to ?? '')) && from <= to) {
@@ -25,7 +29,7 @@ export default async function handler(req, res) {
     // Data changes once a day (04:00 load), so a short CDN cache is safe and cheap.
     return sendJson(res, 200, data, { 'cache-control': 'public, s-maxage=300, stale-while-revalidate=600' });
   } catch (err) {
-    console.error('dashboard proxy failed', err?.name, err?.message);
-    return sendJson(res, 504, { error: 'Dashboard data is unavailable right now.' });
+    console.error('dashboard proxy failed', err?.name, err?.message, err?.cause?.code ?? '');
+    return sendJson(res, err?.name === 'AbortError' ? 504 : 502, { error: 'Dashboard data is unavailable right now.' });
   }
 }

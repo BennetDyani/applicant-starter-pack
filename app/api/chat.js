@@ -33,8 +33,14 @@ export default async function handler(req, res) {
   if (message.length > MAX_MESSAGE) return sendJson(res, 400, { error: `Please keep questions under ${MAX_MESSAGE} characters.` });
   const sessionId = String(body?.session_id ?? '').replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 64);
 
+  let chatUrl;
+  try { chatUrl = env('N8N_CHAT_URL'); env('N8N_WEBHOOK_SECRET'); } catch (err) {
+    console.error('chat misconfigured:', err.message);
+    return sendJson(res, 500, { error: 'The assistant is not configured yet.' });
+  }
+
   try {
-    const { status, data } = await callN8n(env('N8N_CHAT_URL'), {
+    const { status, data } = await callN8n(chatUrl, {
       method: 'POST',
       body: { message, session_id: sessionId },
       timeoutMs: 45000,
@@ -45,7 +51,10 @@ export default async function handler(req, res) {
     }
     return sendJson(res, 200, { answer: data.answer, error: Boolean(data.error) }, { 'cache-control': 'no-store' });
   } catch (err) {
-    console.error('chat proxy failed', err?.name, err?.message);
-    return sendJson(res, 504, { error: 'The assistant took too long to answer. Please try again.' });
+    console.error('chat proxy failed', err?.name, err?.message, err?.cause?.code ?? '');
+    if (err?.name === 'AbortError') {
+      return sendJson(res, 504, { error: 'The assistant took too long to answer. Please try again.' });
+    }
+    return sendJson(res, 502, { error: 'The assistant could not be reached. Please try again.' });
   }
 }
