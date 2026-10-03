@@ -29,8 +29,8 @@ docs/
   erd.png
   solution_design.md     Task 4 notes; .png and .lucid.json alongside
   chat_results.md        5 chat test questions, answers and checks (Task 3)
-pipeline/                ingestion: SQL migrations, clean.js + tests, n8n export (Task 2)
-app/                     static dashboard + chat, Vercel functions, agent prompt, n8n exports (Task 3)
+pipeline/                SQL migrations, clean.js + tests, all 3 n8n workflow exports (Tasks 2-3)
+app/                     static dashboard + chat, Vercel functions, agent system prompt (Task 3)
 scripts/dev-app.mjs      run the app locally: npm run dev:app
 ```
 

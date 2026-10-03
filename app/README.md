@@ -58,7 +58,7 @@ vercel dev          # serves the page and /api/* on http://localhost:3000, using
 
 ## n8n workflows
 
-The workflows are exported to [`n8n/`](n8n/), and the system prompt is in [`agent/system-prompt.md`](agent/system-prompt.md).
+The exports are in [`pipeline/n8n/`](../pipeline/n8n), next to the ingestion workflow. The system prompt is also kept as text in [`agent/system-prompt.md`](agent/system-prompt.md).
 
-- `ridgeback-fleet-chat-agent.json`: webhook (header auth) → normalise and validate → AI Agent with six read-only Postgres tools and window memory → JSON response, with a friendly error branch.
-- `ridgeback-dashboard-api.json`: webhook (header auth) → `select fleet.dashboard_snapshot($1, $2)` → JSON, or 503 on error.
+- [`Ridgeback Logistics - Fleet chat agent.json`](../pipeline/n8n/Ridgeback%20Logistics%20-%20Fleet%20chat%20agent.json): webhook (header auth) → normalise and validate → AI Agent with six read-only Postgres tools and window memory → JSON response, with a friendly error branch.
+- [`Ridgeback Logistics - Dashboard API.json`](../pipeline/n8n/Ridgeback%20Logistics%20-%20Dashboard%20API.json): webhook (header auth) → `select fleet.dashboard_snapshot($1, $2)` → JSON, or 503 on error.
