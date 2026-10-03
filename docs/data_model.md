@@ -1,8 +1,14 @@
 # Data model and cleaning rules
 
-All tables live in the `fleet` schema in Postgres (Supabase). The DDL is in [`pipeline/sql/`](../pipeline/sql), applied in order `001` to `004`.
+All tables live in the `fleet` schema in Postgres (Supabase). The DDL is in [`pipeline/sql/`](../pipeline/sql), applied in order `001` to `007`.
 
 ## Entity relationship diagram
+
+![ERD](erd.png)
+
+Interactive version (Lucidchart, view only): https://lucid.app/lucidchart/bf3b05b2-59e3-4c40-8044-62909997a374/edit?invitationId=inv_db946d12-bcc2-4be2-90a5-69ea24fcfe80
+
+The Mermaid version below is the source kept with the code: GitHub renders it, and schema changes show up in the diff.
 
 ```mermaid
 erDiagram

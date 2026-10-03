@@ -1,0 +1,854 @@
+{
+ "version": 1,
+ "pages": [
+  {
+   "id": "p1",
+   "title": "Solution design",
+   "shapes": [
+    {
+     "id": "title",
+     "type": "text",
+     "boundingBox": {
+      "x": 72,
+      "y": -162,
+      "w": 3060,
+      "h": 108
+     },
+     "text": "<p style=\"font-size:16pt\"><b>Ridgeback Logistics - fleet data solution design</b> <span style=\"font-size:10pt;color:#52514E\">(Haibot assessment, Bennet Dyani)</span></p>"
+    },
+    {
+     "id": "z_src",
+     "type": "roundedRectangleContainer",
+     "boundingBox": {
+      "x": 72,
+      "y": 144,
+      "w": 756,
+      "h": 720
+     },
+     "containerTitle": {
+      "text": "Client data (source)"
+     },
+     "style": {
+      "fill": {
+       "type": "color",
+       "color": "#EEF4FB"
+      },
+      "stroke": {
+       "color": "#2A78D6",
+       "width": 2,
+       "style": "solid"
+      }
+     }
+    },
+    {
+     "id": "z_n8n",
+     "type": "roundedRectangleContainer",
+     "boundingBox": {
+      "x": 1404,
+      "y": 144,
+      "w": 828,
+      "h": 1620
+     },
+     "containerTitle": {
+      "text": "n8n Cloud - orchestration"
+     },
+     "style": {
+      "fill": {
+       "type": "color",
+       "color": "#FDF0F3"
+      },
+      "stroke": {
+       "color": "#EA4B71",
+       "width": 2,
+       "style": "solid"
+      }
+     }
+    },
+    {
+     "id": "z_db",
+     "type": "roundedRectangleContainer",
+     "boundingBox": {
+      "x": 2376,
+      "y": 144,
+      "w": 792,
+      "h": 1620
+     },
+     "containerTitle": {
+      "text": "Supabase Postgres - schema fleet"
+     },
+     "style": {
+      "fill": {
+       "type": "color",
+       "color": "#EEFAF3"
+      },
+      "stroke": {
+       "color": "#3ECF8E",
+       "width": 2,
+       "style": "solid"
+      }
+     }
+    },
+    {
+     "id": "z_vercel",
+     "type": "roundedRectangleContainer",
+     "boundingBox": {
+      "x": 504,
+      "y": 1116,
+      "w": 792,
+      "h": 612
+     },
+     "containerTitle": {
+      "text": "Vercel - hosting"
+     },
+     "style": {
+      "fill": {
+       "type": "color",
+       "color": "#F5F5F3"
+      },
+      "stroke": {
+       "color": "#0B0B0B",
+       "width": 2,
+       "style": "solid"
+      }
+     }
+    },
+    {
+     "id": "files",
+     "type": "document",
+     "boundingBox": {
+      "x": 144,
+      "y": 270,
+      "w": 612,
+      "h": 216
+     },
+     "text": "<p style=\"font-size:10pt;text-align:center\"><b>Daily telemetry CSV, one per day</b><br>Production: client SFTP folder<br>Assessment: GitHub data/incoming</p>",
+     "style": {
+      "fill": {
+       "type": "color",
+       "color": "#FFFFFF"
+      },
+      "stroke": {
+       "color": "#52514E",
+       "width": 1.5,
+       "style": "solid"
+      },
+      "textColor": "#0B0B0B"
+     }
+    },
+    {
+     "id": "mlist",
+     "type": "document",
+     "boundingBox": {
+      "x": 144,
+      "y": 576,
+      "w": 612,
+      "h": 180
+     },
+     "text": "<p style=\"font-size:10pt;text-align:center\"><b>machine_list.csv</b><br>30 machines, home branch, type</p>",
+     "style": {
+      "fill": {
+       "type": "color",
+       "color": "#FFFFFF"
+      },
+      "stroke": {
+       "color": "#52514E",
+       "width": 1.5,
+       "style": "solid"
+      },
+      "textColor": "#0B0B0B"
+     }
+    },
+    {
+     "id": "trig",
+     "type": "terminator",
+     "boundingBox": {
+      "x": 1512,
+      "y": 234,
+      "w": 612,
+      "h": 126
+     },
+     "text": "<p style=\"font-size:10pt;text-align:center\"><b>Schedule trigger</b><br>daily 04:00 SAST (or manual)</p>",
+     "style": {
+      "fill": {
+       "type": "color",
+       "color": "#FFFFFF"
+      },
+      "stroke": {
+       "color": "#52514E",
+       "width": 1.5,
+       "style": "solid"
+      },
+      "textColor": "#0B0B0B"
+     }
+    },
+    {
+     "id": "ingest",
+     "type": "process",
+     "boundingBox": {
+      "x": 1512,
+      "y": 450,
+      "w": 612,
+      "h": 216
+     },
+     "text": "<p style=\"font-size:10pt;text-align:center\"><b>Ingestion workflow</b><br>new or changed files only, clean with clean.js, load each file in one transaction, log every run</p>",
+     "style": {
+      "fill": {
+       "type": "color",
+       "color": "#FFFFFF"
+      },
+      "stroke": {
+       "color": "#52514E",
+       "width": 1.5,
+       "style": "solid"
+      },
+      "textColor": "#0B0B0B"
+     }
+    },
+    {
+     "id": "alert",
+     "type": "process",
+     "boundingBox": {
+      "x": 1512,
+      "y": 756,
+      "w": 612,
+      "h": 144
+     },
+     "text": "<p style=\"font-size:10pt;text-align:center\"><b>Planned: 05:00 freshness check</b><br>alert ops if no file has arrived</p>",
+     "style": {
+      "fill": {
+       "type": "color",
+       "color": "#FFFFFF"
+      },
+      "stroke": {
+       "color": "#52514E",
+       "width": 1.5,
+       "style": "dashed"
+      },
+      "textColor": "#0B0B0B"
+     }
+    },
+    {
+     "id": "weekly",
+     "type": "process",
+     "boundingBox": {
+      "x": 1512,
+      "y": 990,
+      "w": 612,
+      "h": 144
+     },
+     "text": "<p style=\"font-size:10pt;text-align:center\"><b>Stretch: Monday 07:00</b><br>weekly summary for the ops team</p>",
+     "style": {
+      "fill": {
+       "type": "color",
+       "color": "#FFFFFF"
+      },
+      "stroke": {
+       "color": "#52514E",
+       "width": 1.5,
+       "style": "dashed"
+      },
+      "textColor": "#0B0B0B"
+     }
+    },
+    {
+     "id": "dash",
+     "type": "process",
+     "boundingBox": {
+      "x": 1512,
+      "y": 1224,
+      "w": 612,
+      "h": 162
+     },
+     "text": "<p style=\"font-size:10pt;text-align:center\"><b>Dashboard API workflow</b><br>GET webhook, header auth, one JSON snapshot</p>",
+     "style": {
+      "fill": {
+       "type": "color",
+       "color": "#FFFFFF"
+      },
+      "stroke": {
+       "color": "#52514E",
+       "width": 1.5,
+       "style": "solid"
+      },
+      "textColor": "#0B0B0B"
+     }
+    },
+    {
+     "id": "chat",
+     "type": "process",
+     "boundingBox": {
+      "x": 1512,
+      "y": 1476,
+      "w": 612,
+      "h": 216
+     },
+     "text": "<p style=\"font-size:10pt;text-align:center\"><b>Chat agent workflow</b><br>POST webhook, header auth, AI Agent with 6 fixed read-only SQL tools, memory, temperature 0</p>",
+     "style": {
+      "fill": {
+       "type": "color",
+       "color": "#FFFFFF"
+      },
+      "stroke": {
+       "color": "#52514E",
+       "width": 1.5,
+       "style": "solid"
+      },
+      "textColor": "#0B0B0B"
+     }
+    },
+    {
+     "id": "tables",
+     "type": "database",
+     "boundingBox": {
+      "x": 2448,
+      "y": 414,
+      "w": 648,
+      "h": 306
+     },
+     "text": "<p style=\"font-size:10pt;text-align:center\"><b>Tables</b><br>events (natural key), rejected_rows, source_files, ingestion_runs, machines, drivers, branches, event_types</p>",
+     "style": {
+      "fill": {
+       "type": "color",
+       "color": "#FFFFFF"
+      },
+      "stroke": {
+       "color": "#52514E",
+       "width": 1.5,
+       "style": "solid"
+      },
+      "textColor": "#0B0B0B"
+     }
+    },
+    {
+     "id": "views",
+     "type": "process",
+     "boundingBox": {
+      "x": 2448,
+      "y": 846,
+      "w": 648,
+      "h": 198
+     },
+     "text": "<p style=\"font-size:10pt;text-align:center\"><b>Views and functions</b><br>run hours from counter (reset-safe), dashboard_snapshot(), 6 chat_* functions</p>",
+     "style": {
+      "fill": {
+       "type": "color",
+       "color": "#FFFFFF"
+      },
+      "stroke": {
+       "color": "#52514E",
+       "width": 1.5,
+       "style": "solid"
+      },
+      "textColor": "#0B0B0B"
+     }
+    },
+    {
+     "id": "roles",
+     "type": "rectangle",
+     "boundingBox": {
+      "x": 2448,
+      "y": 1170,
+      "w": 648,
+      "h": 252
+     },
+     "text": "<p style=\"font-size:10pt;text-align:center\"><b>Least privilege</b><br>fleet_pipeline: execute load functions only. fleet_reader: read-only, 10 s timeout. Schema not exposed by the REST API</p>",
+     "style": {
+      "fill": {
+       "type": "color",
+       "color": "#FFF8E1"
+      },
+      "stroke": {
+       "color": "#C98500",
+       "width": 1.5,
+       "style": "solid"
+      },
+      "textColor": "#0B0B0B"
+     }
+    },
+    {
+     "id": "page",
+     "type": "process",
+     "boundingBox": {
+      "x": 576,
+      "y": 1188,
+      "w": 648,
+      "h": 162
+     },
+     "text": "<p style=\"font-size:10pt;text-align:center\"><b>Static page</b><br>KPIs, charts, data quality, chat (Chart.js)</p>",
+     "style": {
+      "fill": {
+       "type": "color",
+       "color": "#FFFFFF"
+      },
+      "stroke": {
+       "color": "#52514E",
+       "width": 1.5,
+       "style": "solid"
+      },
+      "textColor": "#0B0B0B"
+     }
+    },
+    {
+     "id": "api",
+     "type": "process",
+     "boundingBox": {
+      "x": 576,
+      "y": 1440,
+      "w": 648,
+      "h": 216
+     },
+     "text": "<p style=\"font-size:10pt;text-align:center\"><b>Serverless proxies /api/*</b><br>validate input, rate limit, timeouts; add x-ridgeback-key from env var</p>",
+     "style": {
+      "fill": {
+       "type": "color",
+       "color": "#FFFFFF"
+      },
+      "stroke": {
+       "color": "#52514E",
+       "width": 1.5,
+       "style": "solid"
+      },
+      "textColor": "#0B0B0B"
+     }
+    },
+    {
+     "id": "users",
+     "type": "rectangle",
+     "boundingBox": {
+      "x": 72,
+      "y": 1800,
+      "w": 360,
+      "h": 162
+     },
+     "text": "<p style=\"font-size:10pt;text-align:center\"><b>Ops team</b><br>Thandi's browser</p>",
+     "style": {
+      "fill": {
+       "type": "color",
+       "color": "#FFFFFF"
+      },
+      "stroke": {
+       "color": "#52514E",
+       "width": 1.5,
+       "style": "solid"
+      },
+      "textColor": "#0B0B0B"
+     }
+    },
+    {
+     "id": "llm",
+     "type": "rectangle",
+     "boundingBox": {
+      "x": 1476,
+      "y": 1908,
+      "w": 684,
+      "h": 198
+     },
+     "text": "<p style=\"font-size:10pt;text-align:center\"><b>OpenRouter</b><br>GPT-4.1 mini, fallback Gemini 2.5 Flash. Key stored only in n8n credentials</p>",
+     "style": {
+      "fill": {
+       "type": "color",
+       "color": "#F3F0FF"
+      },
+      "stroke": {
+       "color": "#4A3AA7",
+       "width": 1.5,
+       "style": "solid"
+      },
+      "textColor": "#0B0B0B"
+     }
+    },
+    {
+     "id": "fail",
+     "type": "rectangle",
+     "boundingBox": {
+      "x": 2376,
+      "y": 1872,
+      "w": 792,
+      "h": 414
+     },
+     "text": "<p style=\"font-size:9pt;text-align:left;padding:8px\"><b>Late, missing or corrupt data</b><br>- Bad rows go to rejected_rows with a reason; good rows still load<br>- Unreadable or failed file: run logged as failed, other files continue, retried next run<br>- Late rows load and are flagged; duplicates blocked by the natural key, so reruns are safe<br>- No file by 05:00: alert (planned)<br>- Primary LLM down: fallback model, then a friendly error</p>",
+     "style": {
+      "fill": {
+       "type": "color",
+       "color": "#FFF8E1"
+      },
+      "stroke": {
+       "color": "#C98500",
+       "width": 1.5,
+       "style": "solid"
+      },
+      "textColor": "#0B0B0B"
+     }
+    }
+   ],
+   "lines": [
+    {
+     "id": "l1",
+     "lineType": "straight",
+     "endpoint1": {
+      "type": "shapeEndpoint",
+      "style": "none",
+      "shapeId": "files",
+      "position": {
+       "x": 1,
+       "y": 0.5
+      }
+     },
+     "endpoint2": {
+      "type": "shapeEndpoint",
+      "style": "arrow",
+      "shapeId": "ingest",
+      "position": {
+       "x": 0,
+       "y": 0.35
+      }
+     },
+     "stroke": {
+      "color": "#52514E",
+      "width": 2,
+      "style": "solid"
+     },
+     "text": [
+      {
+       "text": "<span style=\"font-size:9pt\">list + download</span>",
+       "position": 0.5,
+       "side": "top"
+      }
+     ]
+    },
+    {
+     "id": "l2",
+     "lineType": "straight",
+     "endpoint1": {
+      "type": "shapeEndpoint",
+      "style": "none",
+      "shapeId": "mlist",
+      "position": {
+       "x": 1,
+       "y": 0.5
+      }
+     },
+     "endpoint2": {
+      "type": "shapeEndpoint",
+      "style": "arrow",
+      "shapeId": "ingest",
+      "position": {
+       "x": 0,
+       "y": 0.75
+      }
+     },
+     "stroke": {
+      "color": "#52514E",
+      "width": 2,
+      "style": "solid"
+     }
+    },
+    {
+     "id": "l3",
+     "lineType": "straight",
+     "endpoint1": {
+      "type": "shapeEndpoint",
+      "style": "none",
+      "shapeId": "trig",
+      "position": {
+       "x": 0.5,
+       "y": 1
+      }
+     },
+     "endpoint2": {
+      "type": "shapeEndpoint",
+      "style": "arrow",
+      "shapeId": "ingest",
+      "position": {
+       "x": 0.5,
+       "y": 0
+      }
+     },
+     "stroke": {
+      "color": "#52514E",
+      "width": 2,
+      "style": "solid"
+     }
+    },
+    {
+     "id": "l4",
+     "lineType": "straight",
+     "endpoint1": {
+      "type": "shapeEndpoint",
+      "style": "none",
+      "shapeId": "ingest",
+      "position": {
+       "x": 1,
+       "y": 0.5
+      }
+     },
+     "endpoint2": {
+      "type": "shapeEndpoint",
+      "style": "arrow",
+      "shapeId": "tables",
+      "position": {
+       "x": 0,
+       "y": 0.5
+      }
+     },
+     "stroke": {
+      "color": "#52514E",
+      "width": 2,
+      "style": "solid"
+     },
+     "text": [
+      {
+       "text": "<span style=\"font-size:9pt\">load_clean_file()</span>",
+       "position": 0.5,
+       "side": "top"
+      }
+     ]
+    },
+    {
+     "id": "l5",
+     "lineType": "straight",
+     "endpoint1": {
+      "type": "shapeEndpoint",
+      "style": "none",
+      "shapeId": "weekly",
+      "position": {
+       "x": 1,
+       "y": 0.5
+      }
+     },
+     "endpoint2": {
+      "type": "shapeEndpoint",
+      "style": "arrow",
+      "shapeId": "views",
+      "position": {
+       "x": 0,
+       "y": 0.6
+      }
+     },
+     "stroke": {
+      "color": "#52514E",
+      "width": 2,
+      "style": "dashed"
+     }
+    },
+    {
+     "id": "l6",
+     "lineType": "straight",
+     "endpoint1": {
+      "type": "shapeEndpoint",
+      "style": "none",
+      "shapeId": "dash",
+      "position": {
+       "x": 1,
+       "y": 0.5
+      }
+     },
+     "endpoint2": {
+      "type": "shapeEndpoint",
+      "style": "arrow",
+      "shapeId": "views",
+      "position": {
+       "x": 0,
+       "y": 0.8
+      }
+     },
+     "stroke": {
+      "color": "#52514E",
+      "width": 2,
+      "style": "solid"
+     }
+    },
+    {
+     "id": "l7",
+     "lineType": "straight",
+     "endpoint1": {
+      "type": "shapeEndpoint",
+      "style": "none",
+      "shapeId": "chat",
+      "position": {
+       "x": 1,
+       "y": 0.3
+      }
+     },
+     "endpoint2": {
+      "type": "shapeEndpoint",
+      "style": "arrow",
+      "shapeId": "views",
+      "position": {
+       "x": 0,
+       "y": 0.95
+      }
+     },
+     "stroke": {
+      "color": "#52514E",
+      "width": 2,
+      "style": "solid"
+     },
+     "text": [
+      {
+       "text": "<span style=\"font-size:9pt\">read-only, fleet_reader</span>",
+       "position": 0.55,
+       "side": "bottom"
+      }
+     ]
+    },
+    {
+     "id": "l8",
+     "lineType": "straight",
+     "endpoint1": {
+      "type": "shapeEndpoint",
+      "style": "none",
+      "shapeId": "chat",
+      "position": {
+       "x": 0.5,
+       "y": 1
+      }
+     },
+     "endpoint2": {
+      "type": "shapeEndpoint",
+      "style": "arrow",
+      "shapeId": "llm",
+      "position": {
+       "x": 0.5,
+       "y": 0
+      }
+     },
+     "stroke": {
+      "color": "#4A3AA7",
+      "width": 2,
+      "style": "solid"
+     },
+     "text": [
+      {
+       "text": "<span style=\"font-size:9pt\">only LLM call</span>",
+       "position": 0.5,
+       "side": "middle"
+      }
+     ]
+    },
+    {
+     "id": "l9",
+     "lineType": "straight",
+     "endpoint1": {
+      "type": "shapeEndpoint",
+      "style": "none",
+      "shapeId": "users",
+      "position": {
+       "x": 0.5,
+       "y": 0
+      }
+     },
+     "endpoint2": {
+      "type": "shapeEndpoint",
+      "style": "arrow",
+      "shapeId": "page",
+      "position": {
+       "x": 0,
+       "y": 0.5
+      }
+     },
+     "stroke": {
+      "color": "#52514E",
+      "width": 2,
+      "style": "solid"
+     },
+     "text": [
+      {
+       "text": "<span style=\"font-size:9pt\">loads page</span>",
+       "position": 0.4,
+       "side": "top"
+      }
+     ]
+    },
+    {
+     "id": "l10",
+     "lineType": "straight",
+     "endpoint1": {
+      "type": "shapeEndpoint",
+      "style": "none",
+      "shapeId": "users",
+      "position": {
+       "x": 1,
+       "y": 0.5
+      }
+     },
+     "endpoint2": {
+      "type": "shapeEndpoint",
+      "style": "arrow",
+      "shapeId": "api",
+      "position": {
+       "x": 0.3,
+       "y": 1
+      }
+     },
+     "stroke": {
+      "color": "#52514E",
+      "width": 2,
+      "style": "solid"
+     },
+     "text": [
+      {
+       "text": "<span style=\"font-size:9pt\">same-origin fetch</span>",
+       "position": 0.6,
+       "side": "bottom"
+      }
+     ]
+    },
+    {
+     "id": "l11",
+     "lineType": "straight",
+     "endpoint1": {
+      "type": "shapeEndpoint",
+      "style": "none",
+      "shapeId": "api",
+      "position": {
+       "x": 1,
+       "y": 0.3
+      }
+     },
+     "endpoint2": {
+      "type": "shapeEndpoint",
+      "style": "arrow",
+      "shapeId": "dash",
+      "position": {
+       "x": 0,
+       "y": 0.5
+      }
+     },
+     "stroke": {
+      "color": "#52514E",
+      "width": 2,
+      "style": "solid"
+     }
+    },
+    {
+     "id": "l12",
+     "lineType": "straight",
+     "endpoint1": {
+      "type": "shapeEndpoint",
+      "style": "none",
+      "shapeId": "api",
+      "position": {
+       "x": 1,
+       "y": 0.7
+      }
+     },
+     "endpoint2": {
+      "type": "shapeEndpoint",
+      "style": "arrow",
+      "shapeId": "chat",
+      "position": {
+       "x": 0,
+       "y": 0.5
+      }
+     },
+     "stroke": {
+      "color": "#52514E",
+      "width": 2,
+      "style": "solid"
+     }
+    }
+   ]
+  }
+ ]
+}
