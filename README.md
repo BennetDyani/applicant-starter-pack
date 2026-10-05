@@ -90,7 +90,9 @@ Cleaning code: [`pipeline/src/clean.js`](pipeline/src/clean.js). Tests: `npm tes
 
 ## AI tools used
 
-- **Claude (Anthropic, in Cowork)** as a pair programmer and reviewer. It helped draft the cleaning code and tests, SQL migrations, n8n workflows (through the n8n MCP server), the dashboard and Vercel functions, the Lucid diagrams (through the Lucid connector), and these docs. I made the design decisions: least-privilege roles, fixed SQL tools instead of model-written SQL, the run-hours method, and the model choice. I reviewed every change.
+- **Claude (Anthropic, in Cowork)** as a pair programmer and reviewer. It helped draft the cleaning code and tests, SQL migrations, the dashboard and Vercel functions, and these docs. I made the design decisions: least-privilege roles, fixed SQL tools instead of model-written SQL, the run-hours method, and the model choice. I reviewed every change.
+- **Lucid diagrams** I used Lucid AI to refine the system design diagrams.
+- **GitHub Copilot** I used it to refine my readme files so that they look presentable and organized. 
 - **Verification didn't rely on AI.** Every figure in the dashboard and in the chat results was checked against the raw CSVs and with direct SQL. The cleaning rules have unit tests (`npm test`).
 - **OpenRouter models** (GPT-4.1 mini, Gemini 2.5 Flash) run inside the product, only in the chat agent.
 
