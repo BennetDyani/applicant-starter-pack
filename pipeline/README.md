@@ -77,6 +77,8 @@ In production the provider drops files into an SFTP folder. For this assessment 
 
 Total: **5,072 events**, 96 rejected rows. Reloading all seven files afterwards inserted 0 rows. A test with a missing file logged it as `failed` (HTTP 404) and the remaining files still loaded.
 
+**Unattended runs:** the schedule has fired by itself at 04:00 SAST every day since it was activated, and each run succeeded. On 4 and 5 October it found the seven files already loaded (same name and content hash), so it loaded nothing, which is correct because no new file had arrived. Every run, including one with nothing new, writes a row to `fleet.pipeline_runs` (migration `009`); `fleet.ingestion_runs` keeps one row per file processed.
+
 ## Rebuilding the n8n Code node
 
 `clean.js` is the single source of truth. After changing it, run the tests, then regenerate the workflow code:
