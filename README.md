@@ -5,7 +5,7 @@ Create a GitHub repo from the contents of this folder and do all your work there
 | Item | Link |
 | --- | --- |
 | Live app | https://applicant-starter-pack-app.vercel.app |
-| Walkthrough video | _to add_ |
+| Walkthrough video | https://www.loom.com/share/83127d89969547358a57e2df99b9c12f |
 | Solution design diagram | [`docs/solution_design.png`](docs/solution_design.png) (source: [`docs/solution_design.lucid.json`](docs/solution_design.lucid.json), notes: [`docs/solution_design.md`](docs/solution_design.md), [interactive view](https://lucid.app/lucidchart/612a57a0-f199-40b8-aa0a-26bdcaa198d0/edit?invitationId=inv_f529f2f7-befa-4392-bad9-a3d00bf07c2e)) |
 
 ## Checklist
