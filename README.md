@@ -38,10 +38,10 @@ scripts/dev-app.mjs      run the app locally: npm run dev:app
 
 An n8n workflow (export in [`pipeline/n8n/`](pipeline/n8n)) runs every day at **04:00 SAST** and loads each new or changed file in `data/incoming/` into Postgres. Full details, guarantees and results: [`pipeline/README.md`](pipeline/README.md).
 
-1. Apply [`pipeline/sql/`](pipeline/sql) `001`–`008` to Postgres and set passwords for the `fleet_pipeline` and `fleet_reader` roles.
+1. Apply [`pipeline/sql/`](pipeline/sql) `001`–`009` to Postgres and set passwords for the `fleet_pipeline` and `fleet_reader` roles.
 2. In n8n, create a Postgres credential for `fleet_pipeline` (Supabase Session pooler, SSL required). The dashboard and chat use a separate, read-only `fleet_reader` credential.
 3. Import the workflow JSON, select the credential on the four Postgres nodes, and **Execute workflow** (or activate it for the 04:00 schedule).
-4. Check `fleet.ingestion_runs` for one row per file: rows read, loaded, already loaded, rejected, status.
+4. Check `fleet.pipeline_runs` for one row per run, and `fleet.ingestion_runs` for one row per file: rows read, loaded, already loaded, rejected, status.
 
 Reloading is safe: running all seven files a second time inserts 0 rows. A file that fails is logged as `failed` and the rest still load; it is retried on the next run.
 
@@ -67,7 +67,7 @@ Postgres (Supabase), schema `fleet`. Full ERD, cleaning rules and run-hours meth
 
 - **Reference:** `branches`, `machines`, `drivers`, `event_types`
 - **Facts:** `events`, unique on `(ref_no, event_time, event_type, run_hours_seconds)` so reloads never duplicate
-- **Pipeline bookkeeping:** `source_files`, `rejected_rows`, `ingestion_runs`
+- **Pipeline bookkeeping:** `source_files`, `rejected_rows`, `ingestion_runs` (per file), `pipeline_runs` (per run)
 - **Views** used by both the dashboard and the chat: `v_machine_daily_hours`, `v_driver_daily_hours`, `v_event_counts`, `v_events`, `v_available_days`, `v_latest_runs`, `v_rejections_by_reason`
 
 Cleaning code: [`pipeline/src/clean.js`](pipeline/src/clean.js). Tests: `npm test`. Report over all seven files: `npm run clean:report`.
@@ -85,6 +85,7 @@ Cleaning code: [`pipeline/src/clean.js`](pipeline/src/clean.js). Tests: `npm tes
 - **Late-arriving events** (older than the file's data date) are kept and flagged. Ones already loaded from the previous file are skipped by the unique key.
 - **Exact duplicate rows** within a file are rejected and recorded with the reason `duplicate_row_in_file`.
 - **Driver names** that differ only in case are the same driver.
+- **Run logging:** every run writes one row to `fleet.pipeline_runs` (files seen, files to load, schedule or manual), even when nothing is new. Each file processed also gets a row in `fleet.ingestion_runs` with rows read, loaded and rejected and the outcome.
 - **File source:** for the assessment the pipeline reads files from this repo's `data/incoming/` through the GitHub API, standing in for the client's SFTP folder. A file counts as already loaded when its name and content hash match a previous successful load.
 - **Database TLS:** n8n Cloud connects to Supabase over TLS with certificate verification relaxed (Supabase uses its own CA). In production the Supabase CA certificate would be installed so the certificate is verified too.
 
